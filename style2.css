@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #121212;
+    color: #e0e0e0; 
+}
+
+/* --- Skills Section Specific Styles --- */
+.skills {
+    padding: 60px 20px;
+    background: #1a1a1a; /* Soft dark background layout matching your theme */
+    text-align: center;
+}
+
+.skills-subtitle {
+    color: #a0a0a0;
+    margin-bottom: 40px;
+    font-size: 1rem;
+}
+
+/* Flexbox/Grid wrapper for the 6 cards */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Individual Skill Card configuration */
+.skill-card {
+    background: #242424;
+    border: 1px solid #2d2d2d;
+    border-radius: 8px;
+    padding: 25px;
+    width: 310px; /* Aligns neatly alongside your project-card sizes */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Custom interactive hover state matching your project card rules */
+.skill-card:hover {
+    transform: translateY(-5px); /* Gentle upward float effect */
+    border-color: #00adb5;        /* Highlights card border with accent color */
+}
+
+/* Label styling inside the card container */
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.skill-name {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.skill-percentage {
+    color: #00adb5; /* Theme Electric Accent Tint */
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+/* Outer empty background tracker slot */
+.progress-bar-bg {
+    background: #121212;
+    width: 100%;
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Dynamic loaded inner bar track filling line */
+.progress-bar-fill {
+    background: #00adb5; /* Electric blue-green theme coloring line fill */
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1s ease-in-out; /* Smooth rendering transitions loading */
+}
+
+/* --- Mobile Responsiveness Adjustments --- */
+@media(max-width: 768px) {
+    .skill-card {
+        width: 100%; /* Stacks beautifully to span device full screen windows */
+    }
+}

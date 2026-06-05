@@ -1,0 +1,123 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #121212;
+    color: #e0e0e0; 
+}
+
+/* --- Contact Section --- */
+.contact {
+    padding: 60px 20px;
+    background: #1a1a1a; /* Alternating section contrast background */
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.contact-subtitle {
+    color: #a0a0a0;
+    font-size: 0.95rem;
+    margin-bottom: 35px;
+}
+
+/* Form block central alignment wrapper */
+.contact-container {
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 30px;
+    background: #121212; /* Dark panel container backplate contrast */
+    border: 1px solid #2d2d2d;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+form {
+    width: 100%;
+    text-align: left; /* Left aligns labels and inputs cleanly */
+}
+
+/* Individual field container blocks */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+}
+
+/* Custom Input and Textarea controls matching your theme */
+input,
+textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 0; /* Clear default browser resets */
+    background: #242424; /* Dark card input tone matching your tags */
+    border: 1px solid #3d3d3d;
+    border-radius: 6px; /* Matching structural tag corner radius metrics */
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-family: Arial, sans-serif;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Input placeholder text dimming */
+input::placeholder,
+textarea::placeholder {
+    color: #666666;
+}
+
+/* Changes border outline to your electric accent when active */
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #00adb5; /* Electric accent highlight token */
+    box-shadow: 0 0 8px rgba(0, 173, 181, 0.2); /* Soft ambient neon glow */
+}
+
+/* Prevent horizontal resizing breaking form layout grid widths */
+textarea {
+    resize: vertical;
+}
+
+/* Primary Theme Contact Submission Action Button */
+.submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: #00adb5; /* Bright primary accent color token */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Action button hover rules */
+.submit-btn:hover {
+    background: #008c9e; /* Deeper cyan tone shift tracking focus */
+    transform: translateY(-2px); /* Gentle hover upward lift step */
+}
+
+/* --- Mobile View Adjustments --- */
+@media(max-width: 768px) {
+    .contact-container {
+        padding: 20px; /* Reduces side-padding margins inside smaller screen viewports */
+    }
+}

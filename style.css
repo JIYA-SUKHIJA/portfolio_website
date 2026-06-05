@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Dark Background for the whole page */
+body {
+    background: #121212;
+    color: #e0e0e0; 
+}
+
+header {
+    background: #1e1e1e;
+    color: white;
+    padding: 20px 40px; /* Added some side padding for breathing room */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid #2d2d2d;
+    cursor: pointer;
+}
+
+/* Title Styling */
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 15px; 
+    color: #00adb5; /* Electric accent color for the main title */
+}
+
+h1:hover {
+    transform: scale(1.05); /* Adds a subtle hover effect to the title */
+    text-decoration: none;
+}
+
+.header-bottom-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+/* Subtitle Styling for your name */
+.subtitle {
+    font-size: 1.2rem;
+    font-weight: normal;
+    cursor: pointer;
+    color: #ffffff;
+}
+
+.subtitle:hover {
+    transform: scale(1.1); /* Adds a hover effect to your name */
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    color: #b0b0b0;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}   
+
+nav a:hover {
+    color: #00adb5; 
+    text-decoration: underline;
+}
+
+
+/* Sections Configuration */
+.hero {
+    text-align: center;
+    padding: 60px 20px;
+    background: #1a1a1a; /* Soft dark contrast */
+}
+
+.hero img {
+    width: 300px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 3px solid #00adb5; /* Highlights your profile picture */
+}
+
+.hero h2 {
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #a0a0a0;
+}
+
+.hero button {
+    margin-top: 20px;
+    padding: 12px 28px;
+    background: #00adb5;
+    color: white;
+    border: none;
+    border-radius: 25px; /* Modern rounded button look */
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.hero button:hover {
+    background: #008c9e;
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+.about,
+.skills,
+.projects,
+.contact {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* Alternating background colors slightly to create distinct sections */
+.about, .projects {
+    background: #121212;
+}
+
+.about p {
+    cursor: pointer;
+    transition: color 0.3s ease, font-size 0.3s ease;
+    margin-bottom: 25px; /* Added spacing between paragraph and button */
+}
+
+.about p:hover {
+     font-size: 18px;
+}
+
+/* New "Download Resume" Button Styling */
+.resume-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: transparent;
+    color: #00adb5;              /* Elegant teal text color */
+    border: 2px solid #00adb5;   /* Solid teal border outline */
+    border-radius: 25px;         /* Rounded pill style matches your hero button */
+    font-weight: bold;
+    text-decoration: none;       /* Removes link underline */
+    font-size: 0.95rem;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px;
+}
+
+/* Interactive Hover state matching your ecosystem configuration */
+.resume-btn:hover {
+    background: #00adb5;         /* Fills background color with teal */
+    color: white;                /* Changes text to solid white */
+    transform: translateY(-2px); /* Smooth subtle lift effect */
+    box-shadow: 0 4px 15px rgba(0, 173, 181, 0.3); /* Adds matching glowing drop-shadow */
+}
+
+.skills, .contact {
+    background: #1a1a1a;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+/* Cards & Containers Layout */
+.skill-container,
+.project-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    cursor: pointer;
+}
+/* Dark theme Skill Card */
+.card {
+    background: #242424;
+    color: #e0e0e0;
+    padding: 20px;
+    width: 150px;
+    border-radius: 10px;
+    border: 1px solid #2d2d2d;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+}
+
+.card:hover {
+    transform: translateY(5px); /* Makes skill cards interactive */
+    transition: all 0.3s ease-in-out;
+    background-color: grey;
+    color: whitesmoke;
+}
+
+/* Dark theme Project Card */
+.project-card {
+    background: #242424;
+    width: 310px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #2d2d2d;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(5px); /* Makes project interactive */
+    background-color: grey;
+    color: whitesmoke;
+}
+
+.project-card img {
+    width: 100%;
+    opacity: 0.85; /* Softens images so they don't blast brightness */
+    border-bottom: 1px solid #2d2d2d;
+}
+
+.project-card h3 {
+    color: #ffffff;
+    padding: 15px 15px 5px 15px;
+}
+
+.project-card p {
+    color: #a0a0a0;
+    padding: 0 15px 15px 15px;
+    font-size: 0.95rem;
+}
+
+/* Dark Form Controls */
+form {
+    max-width: 500px;
+    margin: auto;
+    text-align: left;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0;
+    background: #242424;
+    border: 1px solid #3d3d3d;
+    border-radius: 6px;
+    color: #ffffff;
+}
+
+/* Changes border outline when clicking inside form inputs */
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #00adb5;
+}
+
+form button {
+    width: 100%;
+    padding: 14px;
+    background: #00adb5; /* Matching our modern primary theme accent */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background: #008c9e;
+}
+
+/* Footer Styling */
+footer {
+    background: #111111;
+    color: #777777;
+    text-align: center;
+    padding: 25px;
+    border-top: 1px solid #222222;
+}
+
+@media(max-width: 768px){
+    header {
+        padding: 20px;
+    }
+
+    .header-bottom-row {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    header h1 {
+        text-align: center;
+        font-size: 1.8rem;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .project-card {
+        width: 100%;
+    }
+}

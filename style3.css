@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #121212;
+    color: #e0e0e0; 
+}
+
+/* --- Projects Section --- */
+.projects {
+    padding: 60px 20px;
+    background: #121212; /* Alternating background color matching your screenshot */
+    text-align: center;
+}
+
+.projects h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* Flexbox alignments matching your global layout standard rules */
+.project-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 30px auto 0 auto;
+}
+
+/* Redesigned Project Card inheriting your explicit dark mode colors */
+.project-card {
+    background: #242424;
+    width: 320px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #2d2d2d;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-align: left; /* Left-aligns inner typography naturally like your About columns */
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Custom interactive animation track matching your signature style layout */
+.project-card:hover {
+    transform: translateY(5px); /* Keeps your unique downward glide interaction */
+    background-color: #1e1e1e;   /* Subtle shift highlighting active card element focus */
+}
+
+.project-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    opacity: 0.85; /* Softens images so they don't blast brightness */
+    border-bottom: 1px solid #2d2d2d;
+}
+
+/* Padding container wrapper protecting content alignment layout */
+.project-content {
+    padding: 20px;
+}
+
+/* Project title styling inheriting your signature electric teal tint */
+.project-card h3 {
+    color: #00adb5; /* Matches your exact theme primary accent token from the screenshot */
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Body description typography metrics */
+.project-description {
+    color: #a0a0a0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+/* Project-specific tech stack flex list box layout wrapper */
+.project-tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* Inline inline pill tags styled identically to your skills view screenshot list items */
+.tech-tag {
+    background: #121212;       /* Inverted contrast dark token matching parent frame backgrounds */
+    color: #ffffff;            /* High visibility clean contrast white tracking text labels */
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 6px;        /* Clean button rounded corners */
+    border: 1px solid #3d3d3d;  /* Muted dark card borders track framing */
+}
+
+/* --- Mobile View Adjustments --- */
+@media(max-width: 768px) {
+    .project-card {
+        width: 100%; /* Spans to device window boundaries comfortably on phones */
+    }
+}
