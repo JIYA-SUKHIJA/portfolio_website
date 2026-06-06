@@ -99,6 +99,35 @@ body {
     border: 1px solid #3d3d3d;  /* Muted dark card borders track framing */
 }
 
+.project-conclusion {
+    margin-top: 60px;
+    font-size: 1rem;
+    color: #b0b0b0;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.resume-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: transparent;
+    color: #00adb5;              
+    border: 2px solid #00adb5;   
+    border-radius: 25px;         
+    font-weight: bold;
+    text-decoration: none;       
+    font-size: 0.95rem;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.resume-btn:hover {
+    background: #00adb5;         
+    color: white;                
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 15px rgba(0, 173, 181, 0.3); 
+}
+
+
 /* --- Mobile View Adjustments --- */
 @media(max-width: 768px) {
     .project-card {

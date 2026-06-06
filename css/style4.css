@@ -30,6 +30,10 @@ body {
     margin-bottom: 35px;
 }
 
+.contact-subtitle:hover{
+    font-size: 1rem;
+}
+
 /* Form block central alignment wrapper */
 .contact-container {
     max-width: 550px;
@@ -113,6 +117,38 @@ textarea {
 .submit-btn:hover {
     background: #008c9e; /* Deeper cyan tone shift tracking focus */
     transform: translateY(-2px); /* Gentle hover upward lift step */
+}
+
+.contact-note{
+    margin-top: 30px;
+    font-size: 1rem;
+    color: #b0b0b0;
+    text-align: center;
+}
+
+.contact-note:hover{
+    font-size: 1.05rem;
+    color: #ffffff;
+}
+
+.resume-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: transparent;
+    color: #00adb5;              
+    border: 2px solid #00adb5;   
+    border-radius: 25px;         
+    font-weight: bold;
+    text-decoration: none;       
+    font-size: 0.95rem;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.resume-btn:hover {
+    background: #00adb5;         
+    color: white;                
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 15px rgba(0, 173, 181, 0.3); 
 }
 
 /* --- Mobile View Adjustments --- */

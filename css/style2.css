@@ -1,0 +1,161 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #121212;
+    color: #e0e0e0; 
+}
+
+/* --- Skills Section Specific Styles --- */
+.skills {
+    padding: 60px 20px;
+    background: #1a1a1a; 
+    text-align: center;
+}
+
+.skills h2 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.skills-subtitle {
+    color: #a0a0a0;
+    margin-bottom: 50px;
+    font-size: 1.1rem;
+}
+
+/* --- Category Wrappers --- */
+.skills-category-wrapper {
+    margin-bottom: 50px;
+}
+
+.category-title {
+    color: #00adb5;
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    border-bottom: 2px solid #2d2d2d;
+    display: inline-block;
+    padding-bottom: 8px;
+}
+
+/* Flexbox/Grid wrapper for the cards */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+/* Individual Skill Card configuration */
+.skill-card {
+    background: #242424;
+    border: 1px solid #2d2d2d;
+    border-radius: 8px;
+    padding: 25px;
+    width: 320px; 
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-align: left;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+/* Custom interactive hover state matching your project card rules */
+.skill-card:hover {
+    transform: translateY(-5px); 
+    border-color: #00adb5;        
+}
+
+/* Label styling inside the card container */
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.skill-name {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 1.05rem;
+}
+
+.skill-percentage {
+    color: #00adb5; 
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+/* Outer empty background tracker slot */
+.progress-bar-bg {
+    background: #121212;
+    width: 100%;
+    height: 8px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* Dynamic loaded inner bar track filling line */
+.progress-bar-fill {
+    background: #00adb5; 
+    height: 100%;
+    border-radius: 10px;
+    transition: width 1.5s ease-in-out; 
+}
+
+.skills-description {
+    max-width: 900px;
+    margin: 60px auto 0;
+    color: #b0b0b0;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    background: #242424;
+    padding: 25px;
+    border-radius: 0 8px 8px 0;
+    text-align: left;
+}
+
+.skills-description:hover {
+    background: #2d2d2d;
+    color: #ffffff;
+    border-color: #00adb5;
+    font-size: 1.15rem;
+}
+
+.resume-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: transparent;
+    color: #00adb5;              
+    border: 2px solid #00adb5;   
+    border-radius: 25px;         
+    font-weight: bold;
+    text-decoration: none;       
+    font-size: 0.95rem;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+
+.resume-btn:hover {
+    background: #00adb5;         
+    color: white;                
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 15px rgba(0, 173, 181, 0.3); 
+}
+
+/* --- Mobile Responsiveness Adjustments --- */
+@media(max-width: 768px) {
+    .skill-card {
+        width: 100%; 
+    }
+    .skills-description {
+        font-size: 1rem;
+        padding: 20px;
+    }
+}

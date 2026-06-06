@@ -34,10 +34,6 @@ h1:hover {
     text-decoration: none;
 }
 
-/* ==========================================================================
-   UPDATED POSITIONING FOR THE RESUME BUTTON
-   ========================================================================== */
-
 /* Anchor wrapper that enables pin-point positioning inside the section area */
 .about-relative-wrapper {
     position: relative;
@@ -203,6 +199,10 @@ h2 {
     width: 46%;
 }
 
+.about-column.full-width {
+    width: 100%;
+}
+
 .about-column h3 {
     font-size: 1.4rem;
     color: #ffffff;
@@ -234,12 +234,22 @@ h2 {
     font-size: 0.95rem;
 }
 
+/* Skills Categories */
+.skills-category {
+    margin-bottom: 20px;
+}
+
+.skills-category h4 {
+    font-size: 1rem;
+    color: #b0b0b0;
+    margin-bottom: 10px;
+}
+
 /* Skills Wrapper & Inline Flex tags */
 .skills-list {
     display: flex;
     flex-wrap: wrap; 
     gap: 12px;
-    margin-top: 15px;
 }
 
 /* Repurposing your card styling concept into easy, modern tech tags */
@@ -261,9 +271,35 @@ h2 {
     color: whitesmoke;
 }
 
-/* ==========================================================================
-   PROJECTS, CONTACT, & FORM CONTROLS
-   ========================================================================== */
+/* Certifications Layout */
+.certifications-row {
+    margin-top: 50px;
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.cert-item {
+    background: #1a1a1a;
+    padding: 15px 20px;
+    border-left: 3px solid #00adb5;
+    border-radius: 4px;
+    color: #e0e0e0;
+    font-weight: bold;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.cert-item:hover {
+    transform: translateX(5px); /* Slides right on hover */
+    background-color: #242424;
+    color: #00adb5;
+}
 
 /* Project Container Layout */
 .project-container {
@@ -397,6 +433,10 @@ footer {
     .about-column {
         width: 100%;
         margin-bottom: 35px;
+    }
+
+    .cert-grid {
+        grid-template-columns: 1fr; /* Stacks certifications perfectly on mobile */
     }
 
     .project-card {
