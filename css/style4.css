@@ -1,159 +1,319 @@
+/* --- Inner Page Architecture Design Tokens --- */
+:root {
+    /* Premium Color Palette */
+    --bg-deep: #0a0c10;          /* Deep rich background midnight tone */
+    --bg-surface: #121620;       /* Slate surface for main sections */
+    --bg-card: #1a2030;          /* Lighter slate for distinct component cards */
+    
+    /* Accents & Gradients */
+    --primary-cyan: #00ebd4;     /* Vibrant high-end electric cyan accent */
+    --primary-glow: rgba(0, 235, 212, 0.15);
+    --secondary-blue: #007cf0;   /* Deep tech blue for gradients */
+    --gradient-accent: linear-gradient(135deg, var(--primary-cyan) 0%, var(--secondary-blue) 100%);
+    
+    /* Typography & Borders */
+    --text-bright: #f8fafc;      /* Crisp slate-white for headings */
+    --text-muted: #94a3b8;       /* Refined gray-blue for body text */
+    --border-subtle: #242c3f;    /* High-fidelity border color */
+    
+    /* UI Engineering Tokens */
+    --radius-premium: 16px;
+    --radius-interactive: 30px;
+    --easing-premium: cubic-bezier(0.25, 1, 0.5, 1); 
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Global Reset Configurations --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: var(--bg-deep);
 }
 
 body {
-    background: #121212;
-    color: #e0e0e0; 
+    background-color: var(--bg-deep);
+    color: var(--text-muted);
+    line-height: 1.7;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* --- Contact Section --- */
+/* --- Navigation Header --- */
+header {
+    background: rgba(18, 22, 32, 0.85);
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    padding: 20px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid var(--border-subtle);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 12px; 
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.header-bottom-row {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.subtitle {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    color: var(--text-bright);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: all 0.4s var(--easing-premium);
+    font-weight: 600;
+    font-size: 0.95rem;
+    position: relative;
+    padding: 4px 0;
+}   
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-accent);
+    transition: var(--text-bright) var(--easing-premium) 0.3s;
+}
+
+nav a:hover {
+    color: var(--text-bright);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+/* --- Contact Central Layout Area --- */
 .contact {
-    padding: 60px 20px;
-    background: #1a1a1a; /* Alternating section contrast background */
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 40px 20px;
     text-align: center;
 }
 
-.contact h2 {
-    font-size: 2rem;
-    color: #ffffff;
-    margin-bottom: 10px;
-    font-weight: bold;
+h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-bright);
+    letter-spacing: -1px;
+    margin-bottom: 15px;
+}
+
+.section-title-wrapper {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.section-title-wrapper::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--gradient-accent);
+    margin: 12px auto 0 auto;
+    border-radius: 2px;
 }
 
 .contact-subtitle {
-    color: #a0a0a0;
-    font-size: 0.95rem;
-    margin-bottom: 35px;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto 45px auto;
+    line-height: 1.6;
 }
 
-.contact-subtitle:hover{
-    font-size: 1rem;
-}
-
-/* Form block central alignment wrapper */
+/* --- Premium Slate Contact Form Architecture --- */
 .contact-container {
-    max-width: 550px;
+    max-width: 580px;
     margin: 0 auto;
-    padding: 30px;
-    background: #121212; /* Dark panel container backplate contrast */
-    border: 1px solid #2d2d2d;
-    border-radius: 10px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    background: var(--bg-surface);
+    padding: 50px 40px;
+    border-radius: var(--radius-premium);
+    border: 1px solid var(--border-subtle);
+    box-shadow: var(--shadow-lg);
 }
 
 form {
     width: 100%;
-    text-align: left; /* Left aligns labels and inputs cleanly */
+    text-align: left;
 }
 
-/* Individual field container blocks */
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .form-group label {
     display: block;
-    color: #ffffff;
+    color: var(--text-bright);
     font-size: 0.9rem;
-    font-weight: bold;
-    margin-bottom: 8px;
+    font-weight: 700;
+    margin-bottom: 10px;
     letter-spacing: 0.5px;
 }
 
-/* Custom Input and Textarea controls matching your theme */
-input,
-textarea {
+input, textarea {
     width: 100%;
-    padding: 14px;
-    margin: 0; /* Clear default browser resets */
-    background: #242424; /* Dark card input tone matching your tags */
-    border: 1px solid #3d3d3d;
-    border-radius: 6px; /* Matching structural tag corner radius metrics */
-    color: #ffffff;
+    padding: 16px;
+    margin: 0;
+    background: var(--bg-deep);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    color: var(--text-bright);
     font-size: 0.95rem;
-    font-family: Arial, sans-serif;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Input placeholder text dimming */
-input::placeholder,
-textarea::placeholder {
-    color: #666666;
+input::placeholder, textarea::placeholder {
+    color: #4b5563;
 }
 
-/* Changes border outline to your electric accent when active */
-input:focus,
-textarea:focus {
+input:focus, textarea:focus {
     outline: none;
-    border-color: #00adb5; /* Electric accent highlight token */
-    box-shadow: 0 0 8px rgba(0, 173, 181, 0.2); /* Soft ambient neon glow */
+    border-color: var(--primary-cyan);
+    box-shadow: 0 0 0 4px var(--primary-glow);
 }
 
-/* Prevent horizontal resizing breaking form layout grid widths */
 textarea {
     resize: vertical;
 }
 
-/* Primary Theme Contact Submission Action Button */
+/* Submit Action Button styling matches landing metrics */
 .submit-btn {
     width: 100%;
-    padding: 14px;
-    background: #00adb5; /* Bright primary accent color token */
-    color: white;
+    padding: 16px;
+    background: var(--gradient-accent);
+    color: var(--bg-deep);
     border: none;
-    border-radius: 6px;
-    font-weight: bold;
+    border-radius: var(--radius-interactive); 
+    font-weight: 800;
     font-size: 1rem;
     cursor: pointer;
     margin-top: 5px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 235, 212, 0.25);
+    transition: transform 0.3s var(--easing-premium), box-shadow 0.3s ease;
+    will-change: transform;
 }
 
-/* Action button hover rules */
 .submit-btn:hover {
-    background: #008c9e; /* Deeper cyan tone shift tracking focus */
-    transform: translateY(-2px); /* Gentle hover upward lift step */
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 25px rgba(0, 235, 212, 0.45);
 }
 
-.contact-note{
-    margin-top: 30px;
-    font-size: 1rem;
-    color: #b0b0b0;
-    text-align: center;
-}
-
-.contact-note:hover{
+/* Callout Summary Note Box */
+.contact-note {
+    max-width: 580px;
+    margin: 45px auto 0 auto;
+    color: var(--text-muted);
     font-size: 1.05rem;
-    color: #ffffff;
+    line-height: 1.8;
+    background: var(--bg-surface);
+    padding: 35px;
+    border-radius: var(--radius-premium);
+    border: 1px solid var(--border-subtle);
+    border-left: 5px solid var(--primary-cyan);
+    text-align: left;
+    box-shadow: var(--shadow-sm);
+}
+
+/* --- Navigation Button Container --- */
+.back-home-container {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .resume-btn {
-    display: inline-block;
-    padding: 12px 28px;
-    background: transparent;
-    color: #00adb5;              
-    border: 2px solid #00adb5;   
-    border-radius: 25px;         
-    font-weight: bold;
-    text-decoration: none;       
+    padding: 14px 38px;
+    background: var(--gradient-accent);
+    color: var(--bg-deep);
+    border: none;
+    border-radius: var(--radius-interactive); 
+    font-weight: 800;
     font-size: 0.95rem;
-    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 4px 15px rgba(0, 235, 212, 0.25);
+    transition: transform 0.3s var(--easing-premium), box-shadow 0.3s ease;
+    will-change: transform;
 }
 
 .resume-btn:hover {
-    background: #00adb5;         
-    color: white;                
-    transform: translateY(-2px); 
-    box-shadow: 0 4px 15px rgba(0, 173, 181, 0.3); 
+    transform: translateY(-3px); 
+    box-shadow: 0 8px 25px rgba(0, 235, 212, 0.45);
 }
 
-/* --- Mobile View Adjustments --- */
+/* --- Premium Footer --- */
+footer {
+    background: #06080c;
+    color: #475569;
+    text-align: center;
+    padding: 40px;
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-subtle);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-top: 60px;
+}
+
+/* --- Fluent Responsive View Adapters --- */
 @media(max-width: 768px) {
+    header {
+        padding: 25px 20px;
+    }
+
+    .header-bottom-row {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    nav ul {
+        gap: 20px;
+    }
+
     .contact-container {
-        padding: 20px; /* Reduces side-padding margins inside smaller screen viewports */
+        padding: 35px 20px;
+    }
+
+    .contact-note {
+        padding: 25px 20px;
     }
 }

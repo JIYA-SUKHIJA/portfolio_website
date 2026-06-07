@@ -4,19 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Portfolio Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    
     <header>
-      <h1
-        style="
-          text-align: center;
-          font-family:
-            &quot;Gill Sans&quot;, &quot;Gill Sans MT&quot;, Calibri,
-            &quot;Trebuchet MS&quot;, sans-serif;
-        ">
-        My Digital Workspace
-      </h1>
+      <h1>My Digital Workspace</h1>
       <div class="header-bottom-row">
         <p class="subtitle">JIYA SUKHIJA</p>
         <nav>
@@ -33,10 +29,10 @@
 
     <div class="hero-about-wrapper">
       <section class="hero">
-        <img src="images/profile.jpeg" alt="Profile" />
+        <img src="images/profile.jpeg" alt="Profile Portfolio Snapshot" />
         <h2>Full Stack Developer</h2>
-        <p>I build modern websites using HTML5, CSS3 and JavaScript.</p>
-        <button>Hire Me</button>
+        <p>I build modern web applications using HTML5, CSS3, and JavaScript.</p>
+        <button onclick="document.getElementById('contact').scrollIntoView();">Hire Me</button>
       </section>
 
       <section class="about" id="about">
@@ -59,9 +55,43 @@
       </section>
     </div>
 
-    <section class="skills">
-      <h2>My Skills</h2>
+    <section class="education">
+      <div class="section-title-wrapper">
+        <h2>Education</h2>
+      </div>
+      <div class="education-container">
+        
+        <div class="education-card">
+          <div class="edu-header">
+            <h3>Master of Computer Applications (MCA)</h3>
+            <span class="edu-duration">2025 - 2027</span>
+          </div>
+          <p class="edu-institution">Geeta University, Panipat</p>
+          <div class="edu-badge-row">
+            <span class="edu-badge">CGPA: 8.9</span>
+            <span class="edu-badge status">Pursuing</span>
+          </div>
+        </div>
 
+        <div class="education-card">
+          <div class="edu-header">
+            <h3>Bachelor of Computer Applications (BCA)</h3>
+            <span class="edu-duration">2022 - 2025</span>
+          </div>
+          <p class="edu-institution">DAV PG College, Karnal (Kurukshetra University)</p>
+          <div class="edu-badge-row">
+            <span class="edu-badge">CGPA: 7.0</span>
+            <span class="edu-badge status completed">Completed</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="skills">
+      <div class="section-title-wrapper">
+        <h2>My Skills</h2>
+      </div>
       <div class="skill-container">
         <div class="card">HTML5</div>
         <div class="card">CSS3</div>
@@ -74,50 +104,53 @@
     </section>
 
     <section class="projects">
-      <h2>Projects</h2>
-
+      <div class="section-title-wrapper">
+        <h2>Projects</h2>
+      </div>
       <div class="project-container">
         
         <div class="project-card">
           <img src="images/E-Commerce Website.webp" alt="E-Commerce Website Showcase" />
-          <div class="project-content" style="padding: 5px 15px 15px 15px;">
+          <div class="project-content">
             <h3>E-Commerce Website</h3>
-            <p>Online shopping website using HTML, CSS and JS.</p>
+            <p>An interactive, full-stack online shopping platform designed using HTML, CSS, and JavaScript.</p>
           </div>
         </div>
 
         <div class="project-card">
           <img src="images/Student Management System.webp" alt="Student Management System Showcase" />
-          <div class="project-content" style="padding: 5px 15px 15px 15px;">
+          <div class="project-content">
             <h3>Student Management System</h3>
-            <p>CRUD application for managing student records.</p>
+            <p>A full feature CRUD database utility dashboard built for managing student enrollment files.</p>
           </div>
         </div>
 
         <div class="project-card">
           <img src="images/Porfolio Website.webp" alt="Portfolio Website Showcase" />
-          <div class="project-content" style="padding: 5px 15px 15px 15px;">
+          <div class="project-content">
             <h3>Portfolio Website</h3>
-            <p>Responsive personal portfolio website.</p>
+            <p>A highly performance-optimized, clean, and fully responsive developer showcase interface.</p>
           </div>
         </div>
 
       </div>
     </section>
 
-    <section class="contact">
-      <h2>Contact Me</h2>
-
-      <form>
-        <input type="text" placeholder="Your Name" />
-        <input type="email" placeholder="Your Email" />
-        <textarea placeholder="Your Message"></textarea>
-        <button type="submit">Submit</button>
+    <section class="contact" id="contact">
+      <div class="section-title-wrapper">
+        <h2>Contact Me</h2>
+      </div>
+      <form action="#">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Submit Message</button>
       </form>
     </section>
 
     <footer>
-      <p>© 2026 All Rights Reserved.</p>
+      <p>© 2026 Jiya Sukhija. All Rights Reserved.</p>
     </footer>
+
   </body>
 </html>
