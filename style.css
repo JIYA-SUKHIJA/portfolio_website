@@ -149,6 +149,38 @@ nav a:hover {
     background: #121212;
 }
 
+/* Dark theme Project Card */
+.project-card {
+    background: #242424;
+    width: 320px;            /* Increased slightly for optimal grid width balance */
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #2d2d2d;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-align: left;        /* Left-aligned text makes content look balanced */
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* Clean upward interactive lift */
+    background-color: #1e1e1e;   /* Subtle focus highlight background shift */
+}
+
+.project-card img {
+    width: 100%;
+    height: 180px;           /* CRITICAL: Enforces identical uniform height across cards */
+    object-fit: cover;       /* CRITICAL: Crops images beautifully without distortion */
+    opacity: 0.85; 
+    border-bottom: 1px solid #2d2d2d;
+}
+
+/* Optional: Make the titles match your accent color theme */
+.project-card h3 {
+    color: #00adb5;          /* Matches your portfolio's electric teal theme color */
+    padding: 15px 15px 5px 15px;
+    font-size: 1.25rem;
+}
+
 .about p {
     cursor: pointer;
     transition: color 0.3s ease, font-size 0.3s ease;
