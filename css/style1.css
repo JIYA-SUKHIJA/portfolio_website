@@ -1,36 +1,46 @@
-/* --- Inner Page Architecture Design Tokens --- */
+/* --- Inner Page Architecture Design Tokens (Synced with main style.css) --- */
 :root {
-    /* Premium Color Palette */
-    --bg-deep: #0a0c10;          /* Deep rich background midnight tone */
-    --bg-surface: #121620;       /* Slate surface for main sections */
-    --bg-card: #1a2030;          /* Lighter slate for distinct component cards */
+    /* Fluid Design Tokens & Colors */
+    --bg-deep: #0b0f19;          
+    --bg-surface: #131c2e;       
+    --bg-card: #1e293b;          
     
-    /* Accents & Gradients */
-    --primary-cyan: #00ebd4;     /* Vibrant high-end electric cyan accent */
-    --primary-glow: rgba(0, 235, 212, 0.15);
-    --secondary-blue: #007cf0;   /* Deep tech blue for gradients */
-    --gradient-accent: linear-gradient(135deg, var(--primary-cyan) 0%, var(--secondary-blue) 100%);
-    --gradient-card-hover: linear-gradient(180deg, rgba(26,32,48,1) 0%, rgba(18,22,32,1) 100%);
+    /* Accents & High-End Gradients */
+    --primary-blue: #3b82f6;     
+    --primary-glow: rgba(59, 130, 246, 0.15); 
+    --secondary-blue: #60a5fa;   
     
-    /* Typography & Borders */
-    --text-bright: #f8fafc;      /* Crisp slate-white for headings */
-    --text-muted: #94a3b8;       /* Refined gray-blue for body text */
-    --border-subtle: #242c3f;    /* High-fidelity border color */
+    /* Advanced Semantic Gradients */
+    --gradient-accent: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e1b4b 100%); 
+    --gradient-text: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+    --gradient-heading-line: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
     
-    /* UI Engineering Tokens */
-    --radius-premium: 16px;
-    --radius-interactive: 30px;
-    --easing-premium: cubic-bezier(0.25, 1, 0.5, 1); 
-    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.3);
-    --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.5);
+    /* High Contrast Typography & Clean Borders */
+    --text-bright: #f8fafc;      
+    --text-muted: #94a3b8;       
+    --border-subtle: rgba(51, 65, 85, 0.6);    
+    
+    /* UI Engineering Tokens & Timing Functions */
+    --radius-premium: 16px;      
+    --radius-interactive: 8px;   /* Synced from 30px to clean 8px modern radius */
+    
+    /* Custom Luxury Easing (Snappy start, smooth deceleration) */
+    --easing-premium: cubic-bezier(0.2, 0.8, 0.2, 1); 
+    
+    /* Advanced Layered Box Shadows */
+    --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
+    --shadow-lg: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
+    --shadow-glow: 0 0 25px rgba(59, 130, 246, 0.2);
 }
 
-/* --- Global Reset Configurations --- */
+/* --- Global Reset Configurations & Entry Keyframes --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }
 
 html {
@@ -38,20 +48,48 @@ html {
     background-color: var(--bg-deep);
 }
 
+/* Custom Minimalist Scrollbar Design */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--bg-deep);
+}
+::-webkit-scrollbar-thumb {
+    background: #334155;
+    border-radius: 100px;
+    transition: background 0.3s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-blue);
+}
+
 body {
     background-color: var(--bg-deep);
     color: var(--text-muted);
-    line-height: 1.7;
+    line-height: 1.625;
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
+    /* Subtle page load fade-in sequence */
+    animation: pageReveal 1s var(--easing-premium) forwards;
 }
 
-/* --- Navigation Header Fix --- */
+/* --- Global Animation Keyframes --- */
+@keyframes pageReveal {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lineExpand {
+    from { width: 0; opacity: 0; }
+    to { width: 45px; opacity: 1; }
+}
+
+/* --- Navigation Header --- */
 header {
-    background: rgba(18, 22, 32, 0.85);
-    backdrop-filter: blur(12px); 
-    -webkit-backdrop-filter: blur(12px);
-    padding: 20px 40px;
+    background: rgba(11, 15, 25, 0.75);
+    backdrop-filter: blur(20px) saturate(180%); 
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    padding: 16px 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -59,58 +97,61 @@ header {
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+    transition: background-color 0.3s ease;
 }
 
 header h1 {
-    font-size: 2rem;
-    margin-bottom: 12px; 
-    background: var(--gradient-accent);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent; 
-    font-weight: 900;
-    letter-spacing: -1px;
+    font-size: 1.35rem;
+    margin-bottom: 8px; 
+    color: var(--text-bright);
+    font-weight: 800;
+    letter-spacing: -0.02em;
 }
 
 .header-bottom-row {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1100px;
     display: flex;
     justify-content: space-between; 
     align-items: center;
 }
 
 .subtitle {
-    font-size: 1rem;
-    font-weight: 800;
+    font-size: 0.8rem;
+    font-weight: 700;
     letter-spacing: 2px;
-    color: var(--text-bright);
+    color: var(--primary-blue);
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 24px;
 }
 
 nav a {
     color: var(--text-muted);
     text-decoration: none;
-    transition: all 0.4s var(--easing-premium);
-    font-weight: 600;
-    font-size: 0.95rem;
+    font-weight: 500;
+    font-size: 0.875rem;
     position: relative;
-    padding: 4px 0;
+    padding: 6px 0;
+    transition: color 0.3s var(--easing-premium);
 }   
 
+/* Premium Navigation Slide-out Line Transition */
 nav a::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--gradient-accent);
-    transition: var(--text-bright) var(--easing-premium) 0.3s;
+    width: 100%;
+    height: 1.5px;
+    background: var(--primary-blue);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s var(--easing-premium);
 }
 
 nav a:hover {
@@ -118,38 +159,44 @@ nav a:hover {
 }
 
 nav a:hover::after {
-    width: 100%;
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 /* --- Section Master Containers --- */
 .about-relative-wrapper {
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 40px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
 }
 
 /* Title Design matching main landing layout */
 h2 {
-    font-size: 2.5rem;
+    font-size: 2.25rem;
     font-weight: 800;
     color: var(--text-bright);
-    letter-spacing: -1px;
-    margin-bottom: 15px;
+    letter-spacing: -0.03em;
+    margin-bottom: 12px;
 }
 
 .section-title-wrapper {
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     text-align: center;
 }
-
+.section-title-wrapper h2 {
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
 .section-title-wrapper::after {
     content: '';
     display: block;
-    width: 60px;
-    height: 4px;
-    background: var(--gradient-accent);
+    width: 45px;
+    height: 3px;
+    background: var(--gradient-heading-line);
     margin: 12px auto 0 auto;
-    border-radius: 2px;
+    border-radius: 100px;
+    animation: lineExpand 1.2s var(--easing-premium) both;
 }
 
 /* --- About Intro Block --- */
@@ -164,43 +211,77 @@ h2 {
 }
 
 .about-intro p {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     color: var(--text-muted);
-    line-height: 1.8;
+    line-height: 1.625;
 }
 
-/* Premium Standalone Download Button */
-.resume-btn-container {
+/* Premium Standalone Buttons with Shimmer Depth */
+.resume-btn-container, .back-home-container {
     text-align: center;
     margin-top: 25px;
 }
 
-.resume-btn {
-    padding: 12px 36px;
-    background: transparent;
-    color: var(--primary-cyan);
-    border: 2px solid var(--primary-cyan);
+.resume-btn, .home-btn {
+    padding: 10px 24px;
+    background: var(--gradient-accent);
+    color: #ffffff;
+    border: none;
     border-radius: var(--radius-interactive); 
-    font-weight: 800;
-    font-size: 0.95rem;
+    font-weight: 600;
+    font-size: 0.875rem;
     cursor: pointer;
     text-decoration: none;
     display: inline-block;
-    transition: transform 0.3s var(--easing-premium), box-shadow 0.3s ease, background 0.3s ease, color 0.3s ease;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: transform 0.3s var(--easing-premium), box-shadow 0.3s var(--easing-premium);
+    will-change: transform;
+}
+
+.resume-btn {
+    background: transparent;
+    color: var(--text-bright);
+    border: 1px solid var(--border-subtle);
+    transition: background-color 0.3s, border-color 0.3s, transform 0.3s var(--easing-premium);
 }
 
 .resume-btn:hover {
-    background: var(--gradient-accent);         
-    color: var(--bg-deep);                
-    transform: translateY(-3px); 
-    box-shadow: 0 8px 25px rgba(0, 235, 212, 0.45);
+    background: rgba(255, 255, 255, 0.03);         
+    border-color: var(--text-bright);
+    transform: translateY(-3px);
+    box-shadow: none;
+    color: #ffffff;
+}
+
+.home-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+    z-index: -1;
+}
+
+.home-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px -4px rgba(59, 130, 246, 0.4);
+}
+
+.home-btn:hover::before {
+    transform: translateX(100%);
 }
 
 /* --- Layout Row: Symmetrical Split Grid --- */
 .about-row {
     display: flex;
     justify-content: space-between;
-    gap: 30px;
+    gap: 24px;
     margin-bottom: 40px;
 }
 
@@ -214,7 +295,7 @@ h2 {
 }
 
 .about-column h3 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 800;
     color: var(--text-bright);
     margin-bottom: 25px;
@@ -227,7 +308,7 @@ h2 {
 .education-item {
     margin-bottom: 25px;
     padding-bottom: 20px;
-    border-bottom: 1px solid rgba(36, 44, 63, 0.5);
+    border-bottom: 1px solid rgba(51, 65, 85, 0.3);
 }
 
 .education-item:last-child {
@@ -237,22 +318,22 @@ h2 {
 }
 
 .education-item h4 {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--text-bright);
     margin-bottom: 6px;
 }
 
 .school-name {
-    color: var(--primary-cyan);
+    color: var(--secondary-blue);
     font-weight: 600;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     margin-bottom: 8px;
 }
 
 .education-item p:not(.school-name) {
     color: var(--text-muted);
-    font-size: 0.95rem;
+    font-size: 0.875rem;
 }
 
 /* Skills Layout inside column */
@@ -265,7 +346,7 @@ h2 {
 }
 
 .skills-category h4 {
-    font-size: 0.95rem;
+    font-size: 0.8rem;
     color: var(--text-bright);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -275,25 +356,30 @@ h2 {
 .skills-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 12px;
 }
 
+/* Springy Reactive Skill Badges Synced with main.css */
 .skill-tag {
-    background: var(--bg-deep);
+    background: rgba(30, 41, 59, 0.4);
     color: var(--text-bright);
-    padding: 8px 16px;
+    padding: 10px 18px;
     border-radius: 8px;
     border: 1px solid var(--border-subtle);
+    font-weight: 600;
     font-size: 0.85rem;
-    font-weight: 700;
-    transition: all 0.3s var(--easing-premium);
+    box-shadow: var(--shadow-sm);
+    transition: border-color 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+                background-color 0.2s ease, 
+                transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    will-change: transform;
 }
 
 .skill-tag:hover {
-    transform: translateY(-3px);
-    border-color: var(--primary-cyan);
-    box-shadow: 0 4px 12px var(--primary-glow);
+    transform: translateY(-4px) scale(1.05);
+    border-color: var(--primary-blue);
     background: var(--bg-card);
+    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.15);
 }
 
 /* --- Certifications Blocks Layout --- */
@@ -308,71 +394,52 @@ h2 {
     gap: 16px;
 }
 
+/* Cert Items With Kinetic Horizontal Micro-Interactions */
 .cert-item {
-    background: var(--bg-deep);
+    background: rgba(15, 23, 42, 0.6);
     border: 1px solid var(--border-subtle);
-    border-left: 4px solid var(--primary-cyan);
+    border-left: 4px solid var(--primary-blue);
     border-radius: 8px;
     padding: 18px 20px;
     color: var(--text-bright);
     font-weight: 700;
-    font-size: 0.9rem;
-    transition: transform 0.3s var(--easing-premium), background 0.3s ease;
+    font-size: 0.875rem;
+    transition: border-color 0.3s var(--easing-premium), transform 0.4s var(--easing-premium), box-shadow 0.4s var(--easing-premium), background-color 0.3s ease;
+    will-change: transform;
 }
 
 .cert-item:hover {
     transform: translateX(6px);
     background: var(--bg-card);
     border-left-color: var(--secondary-blue);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 /* --- Centered Back To Home Button Assembly --- */
 .back-home-container {
-    text-align: center;
     margin-top: 50px;
     margin-bottom: 20px;
     width: 100%;
 }
 
-.home-btn {
-    padding: 14px 38px;
-    background: var(--gradient-accent);
-    color: var(--bg-deep);
-    border: none;
-    border-radius: var(--radius-interactive); 
-    font-weight: 800;
-    font-size: 0.95rem;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    box-shadow: 0 4px 15px rgba(0, 235, 212, 0.25);
-    transition: transform 0.3s var(--easing-premium), box-shadow 0.3s ease;
-    will-change: transform;
-}
-
-.home-btn:hover {
-    transform: translateY(-3px); 
-    box-shadow: 0 8px 25px rgba(0, 235, 212, 0.45);
-}
-
 /* --- Footer Area --- */
 footer {
-    background: #06080c;
+    background: #070a12;
     color: #475569;
     text-align: center;
-    padding: 40px;
-    font-size: 0.9rem;
+    padding: 30px;
+    font-size: 0.8rem;
+    font-weight: 500;
     border-top: 1px solid var(--border-subtle);
-    font-weight: 600;
     letter-spacing: 0.5px;
     margin-top: 60px;
 }
 
-/* --- Fluent Responsive View Adapters --- */
+/* --- Fluid Structural Responsive View Adapters --- */
 @media(max-width: 992px) {
     .about-row {
         flex-direction: column;
-        gap: 30px;
+        gap: 24px;
     }
     .about-intro {
         padding: 30px 20px;
@@ -381,17 +448,21 @@ footer {
 
 @media(max-width: 768px) {
     header {
-        padding: 25px 20px;
+        padding: 16px 20px;
     }
 
     .header-bottom-row {
         flex-direction: column;
-        gap: 20px;
+        gap: 12px;
         text-align: center;
     }
 
+    header h1 {
+        font-size: 1.25rem;
+    }
+
     nav ul {
-        gap: 20px;
+        gap: 16px;
     }
 
     .about-column {
