@@ -1,6 +1,5 @@
 /* --- CSS Custom Property Architecture --- */
 :root {
-    /* Fluid Design Tokens & Colors */
     --bg-deep: #0b0f19;          
     --bg-surface: #131c2e;       
     --bg-card: #1e293b;          
@@ -23,8 +22,6 @@
     /* UI Engineering Tokens & Timing Functions */
     --radius-premium: 16px;      
     --radius-interactive: 8px;   
-    
-    /* Custom Luxury Easing (Snappy start, smooth deceleration) */
     --easing-premium: cubic-bezier(0.2, 0.8, 0.2, 1); 
     
     /* Advanced Layered Box Shadows */
@@ -38,7 +35,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
 }
@@ -69,8 +66,13 @@ body {
     color: var(--text-muted);
     line-height: 1.625;
     overflow-x: hidden;
-    /* Subtle page load fade-in sequence */
     animation: pageReveal 1s var(--easing-premium) forwards;
+}
+
+/* --- Professional Heading Typographic Hierarchy --- */
+h1, h2, h3, h4, .subtitle {
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    color: var(--text-bright);
 }
 
 /* --- Global Animation Keyframes --- */
@@ -89,11 +91,15 @@ body {
     to { width: 45px; opacity: 1; }
 }
 
-/* --- Typography System & Animated Titles --- */
+@keyframes statusPulse {
+    0%, 100% { opacity: 0.3; transform: scale(0.95); }
+    50% { opacity: 1; transform: scale(1.1); }
+}
+
+/* --- Typography System --- */
 h2 {
     font-size: 2.25rem;
     font-weight: 800;
-    color: var(--text-bright);
     letter-spacing: -0.03em;
     margin-bottom: 12px;
 }
@@ -116,6 +122,10 @@ h2 {
     margin: 12px auto 0 auto;
     border-radius: 100px;
     animation: lineExpand 1.2s var(--easing-premium) both;
+}
+
+input, textarea, button, .card, .edu-badge {
+    font-family: 'Inter', system-ui, sans-serif;
 }
 
 /* --- Advanced Sticky Glassmorphic Header --- */
@@ -152,9 +162,9 @@ header h1 {
 }
 
 .subtitle {
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 2px;
+    font-size: 1.15rem;
+    font-weight: 800;
+    letter-spacing: 0.15em;
     color: var(--primary-blue);
 }
 
@@ -167,14 +177,14 @@ nav ul {
 nav a {
     color: var(--text-muted);
     text-decoration: none;
-    font-weight: 500;
-    font-size: 0.875rem;
+    font-weight: 600;
+    font-size: 0.85rem;
     position: relative;
     padding: 6px 0;
+    letter-spacing: 0.02em;
     transition: color 0.3s var(--easing-premium);
-}   
+}  
 
-/* Premium Navigation Slide-out Line Transition */
 nav a::after {
     content: '';
     position: absolute;
@@ -212,7 +222,6 @@ nav a:hover::after {
     position: relative;
 }
 
-/* Dynamic Radial Blur Animation Layer */
 .hero-about-wrapper::before {
     content: '';
     position: absolute;
@@ -227,54 +236,122 @@ nav a:hover::after {
 }
 
 .hero {
-    flex: 0 0 38%; 
-    text-align: center;
-    padding: 50px 30px;
+    flex: 0 0 42%; /* Marginally wider layout footprint to hold long text phrases */
+    text-align: left; /* Shift text layout to match the asymmetrical clean aesthetic of video snippet */
+    padding: 50px 35px;
     background: rgba(15, 23, 42, 0.4);
     border-right: 1px solid var(--border-subtle);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     z-index: 1;
 }
 
+.profile-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 24px;
+}
+
 .hero img {
-    width: 150px;
-    height: 150px; 
+    width: 130px;
+    height: 130px; 
     object-fit: cover;
     border-radius: 50%; 
-    margin-bottom: 20px;
     border: 2px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-    /* Multi-property hardware transition matrix */
     transition: transform 0.6s var(--easing-premium), border-color 0.4s ease, box-shadow 0.4s ease;
     will-change: transform;
 }
 
 .hero img:hover {
-    transform: scale(1.05) rotate(2deg);
+    transform: scale(1.03) rotate(1deg);
     border-color: var(--primary-blue);
     box-shadow: var(--shadow-glow);
 }
 
-.hero h2 {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 8px;
+.status-badge {
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #090d16;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    color: #38bdf8;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 6px 16px;
+    border-radius: 100px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    letter-spacing: 0.01em;
+}
+
+.status-badge::before {
+    content: '';
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #06b6d4;
+    box-shadow: 0 0 8px 2px #06b6d4;
+    animation: statusPulse 2s ease-in-out infinite;
+}
+
+/* --- Clean Asymmetric Typography Stack Transformation (Video Style) --- */
+.hero-main-title {
+    font-size: 2.8rem; /* Large impact presentation style from clip */
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: var(--text-bright);
+    line-height: 1.1;
+    margin-bottom: 12px;
+}
+
+.typing-management-stack {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 36px;
+    margin-bottom: 16px;
+}
+
+.typing-management-stack h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-bright);
     letter-spacing: -0.02em;
+    margin: 0;
 }
 
-.hero p {
+/* Target color shade matching your clean template layout exactly */
+#typed-target {
+    color: #38bdf8; 
+    font-weight: 800;
+}
+
+/* Animated flashing typing cursor token ruleset */
+.typed-cursor {
+    color: #38bdf8;
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-left: 3px;
+}
+
+.hero-description {
     color: var(--text-muted);
-    font-size: 0.9rem;
-    max-width: 240px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 340px;
+    text-align: left;
 }
 
-/* High-End Button Transitions with Shimmer Depth */
 .hero button, .resume-btn, form button {
-    margin-top: 20px;
-    padding: 10px 24px;
+    margin-top: 24px;
+    padding: 12px 26px;
     background: var(--gradient-accent);
     color: #ffffff;
     border: none;
@@ -313,10 +390,6 @@ nav a:hover::after {
     transform: translateX(100%);
 }
 
-.hero button:active, form button:active {
-    transform: translateY(-1px);
-}
-
 .about {
     flex: 1; 
     padding: 50px;
@@ -347,7 +420,7 @@ nav a:hover::after {
     transform: translateY(-3px);
 }
 
-/* --- Education Horizontal Kinetic Slide Cards --- */
+/* --- Education Section --- */
 .education {
     padding: 60px 20px;
     max-width: 1100px;
@@ -369,7 +442,6 @@ nav a:hover::after {
     padding: 24px;
     text-align: left;
     box-shadow: var(--shadow-sm);
-    /* Micro-interaction sliding transform mechanism */
     transition: border-color 0.3s var(--easing-premium), transform 0.4s var(--easing-premium), box-shadow 0.4s var(--easing-premium);
     will-change: transform;
 }
@@ -439,45 +511,72 @@ nav a:hover::after {
     border-color: rgba(16, 185, 129, 0.2);
 }
 
-/* --- Layout Structures --- */
-.skills, .projects, .contact {
+/* --- Advanced Graphic Skills System --- */
+.skills {
     padding: 60px 20px;
     max-width: 1100px;
     margin: 0 auto;
 }
 
 .skill-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 16px;
     justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
 }
 
-/* --- Springy Reactive Skill Badges --- */
-.card {
-    background: rgba(30, 41, 59, 0.4);
+.skill-card {
+    background: rgba(30, 41, 59, 0.3);
     color: var(--text-bright);
-    padding: 10px 18px;
-    border-radius: 8px;
+    padding: 24px 16px;
+    border-radius: var(--radius-premium);
     border: 1px solid var(--border-subtle);
-    font-weight: 600;
-    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
     box-shadow: var(--shadow-sm);
-    /* Physics-styled bouncy layout transition using scaling transforms */
-    transition: border-color 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                background-color 0.2s ease, 
-                transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: border-color 0.3s var(--easing-premium), 
+                background-color 0.3s ease, 
+                transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     will-change: transform;
 }
 
-.card:hover {
-    transform: translateY(-4px) scale(1.05);
-    border-color: var(--primary-blue);
-    background: var(--bg-card);
-    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.15);
+.skill-card i {
+    font-size: 2.5rem;
+    transition: transform 0.3s var(--easing-premium);
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
 }
 
-/* --- Advanced Masonry Production-Ready Projects Grid --- */
+.skill-card i:not(.colored) {
+    color: #f8fafc;
+}
+
+.skill-card span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: #cbd5e1;
+}
+
+.skill-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    border-color: var(--primary-blue);
+    background: var(--bg-card);
+    box-shadow: 0 12px 24px -8px rgba(59, 130, 246, 0.3);
+}
+
+.skill-card:hover i {
+    transform: scale(1.1) rotate(-3deg);
+}
+
+/* --- Advanced Parallax Projects System --- */
+.projects {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
 .project-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -498,30 +597,37 @@ nav a:hover::after {
     will-change: transform;
 }
 
+.project-img-wrapper {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    position: relative;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.project-card img {
+    width: 100%;
+    height: 100%;           
+    object-fit: cover;       
+    opacity: 0.85;
+    transition: transform 0.7s var(--easing-premium), opacity 0.4s ease;
+    will-change: transform;
+}
+
 .project-card:hover {
     transform: translateY(-6px);
     border-color: rgba(59, 130, 246, 0.4);
     box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.6), var(--primary-glow);
 }
 
-.project-card img {
-    width: 100%;
-    height: 180px;           
-    object-fit: cover;       
-    border-bottom: 1px solid var(--border-subtle);
-    opacity: 0.85;
-    /* Clean parallax zooming scale transform */
-    transition: transform 0.6s var(--easing-premium), opacity 0.4s ease;
-    will-change: transform;
-}
-
 .project-card:hover img {
     opacity: 1;
-    transform: scale(1.04);
+    transform: scale(1.05);
 }
 
 .project-content {
     padding: 24px;
+    justify-content: center;
 }
 
 .project-card h3 {
@@ -538,6 +644,12 @@ nav a:hover::after {
 }
 
 /* --- Input Interaction Focus Ring Architecture --- */
+.contact {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
 form {
     max-width: 500px;
     margin: 0 auto;
@@ -559,7 +671,6 @@ input, textarea {
     border-radius: 6px;
     color: var(--text-bright);
     font-size: 0.875rem;
-    /* Border glows and input resizing ease curves */
     transition: border-color 0.3s var(--easing-premium), box-shadow 0.3s var(--easing-premium);
 }
 
@@ -602,6 +713,16 @@ footer {
         border-bottom: 1px solid var(--border-subtle);
         width: 100%;
         padding: 40px 20px;
+        align-items: center; /* Center layout components gracefully on mid-sized mobile platforms */
+    }
+    .hero-main-title {
+        text-align: center;
+    }
+    .typing-management-stack {
+        justify-content: center;
+    }
+    .hero-description {
+        text-align: center;
     }
     .about {
         width: 100%;
@@ -637,7 +758,7 @@ footer {
     }
 
     .education-card:hover {
-        transform: translateY(-2px); /* Avoid side-sliding bugs on small screens */
+        transform: translateY(-2px);
     }
 
     .edu-header {

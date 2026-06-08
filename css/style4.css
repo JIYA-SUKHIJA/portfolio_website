@@ -118,7 +118,7 @@ header h1 {
 }
 
 .subtitle {
-    font-size: 0.8rem;
+    font-size: 1.25rem;
     font-weight: 700;
     letter-spacing: 2px;
     color: var(--primary-blue);

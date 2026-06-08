@@ -6,13 +6,13 @@
     <title>Portfolio Website</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2 family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     
     <header>
-      <h1>My Digital Workspace</h1>
       <div class="header-bottom-row">
         <p class="subtitle">JIYA SUKHIJA</p>
         <nav>
@@ -29,10 +29,19 @@
 
     <div class="hero-about-wrapper">
       <section class="hero">
-        <img src="images/profile.jpeg" alt="Profile Portfolio Snapshot" />
-        <h2>Full Stack Developer</h2>
-        <p>I build modern web applications using HTML5, CSS3, and JavaScript.</p>
-        <button onclick="document.getElementById('contact').scrollIntoView();">Hire Me</button>
+        <div class="profile-container">
+          <img src="images/profile.jpeg" alt="Profile Portfolio Snapshot" />
+          <span class="status-badge">Available for Work</span>
+        </div>
+        
+        <h1 class="hero-main-title">Jiya Sukhija</h1>
+
+        <div class="typing-management-stack">
+          <span id="typed-target"></span>
+        </div>
+
+        <p class="hero-description">I build modern web applications using HTML5, CSS3, and JavaScript.</p>
+        <button class="hire-btn" onclick="document.getElementById('contact').scrollIntoView();">Hire Me</button>
       </section>
 
       <section class="about" id="about">
@@ -93,13 +102,34 @@
         <h2>My Skills</h2>
       </div>
       <div class="skill-container">
-        <div class="card">HTML5</div>
-        <div class="card">CSS3</div>
-        <div class="card">JavaScript</div>
-        <div class="card">Bootstrap</div>
-        <div class="card">React</div>
-        <div class="card">Node.js</div>
-        <div class="card">GitHub</div>
+        <div class="card skill-card">
+          <i class="devicon-html5-plain colored"></i>
+          <span>HTML5</span>
+        </div>
+        <div class="card skill-card">
+          <i class="devicon-css3-plain colored"></i>
+          <span>CSS3</span>
+        </div>
+        <div class="card skill-card">
+          <i class="devicon-javascript-plain colored"></i>
+          <span>JavaScript</span>
+        </div>
+        <div class="card skill-card">
+          <i class="devicon-bootstrap-plain colored"></i>
+          <span>Bootstrap</span>
+        </div>
+        <div class="card skill-card">
+          <i class="devicon-react-original colored"></i>
+          <span>React</span>
+        </div>
+        <div class="card skill-card">
+          <i class="devicon-nodejs-plain colored"></i>
+          <span>Node.js</span>
+        </div>
+        <div class="card skill-card">
+          <i class="devicon-github-original"></i>
+          <span>GitHub</span>
+        </div>
       </div>
     </section>
 
@@ -110,7 +140,9 @@
       <div class="project-container">
         
         <div class="project-card">
-          <img src="images/E-Commerce Website.webp" alt="E-Commerce Website Showcase" />
+          <div class="project-img-wrapper">
+            <img src="images/E-Commerce Website.webp" alt="E-Commerce Website Showcase" />
+          </div>
           <div class="project-content">
             <h3>E-Commerce Website</h3>
             <p>An interactive, full-stack online shopping platform designed using HTML, CSS, and JavaScript.</p>
@@ -118,7 +150,9 @@
         </div>
 
         <div class="project-card">
-          <img src="images/Student Management System.webp" alt="Student Management System Showcase" />
+          <div class="project-img-wrapper">
+            <img src="images/Student Management System.webp" alt="Student Management System Showcase" />
+          </div>
           <div class="project-content">
             <h3>Student Management System</h3>
             <p>A full feature CRUD database utility dashboard built for managing student enrollment files.</p>
@@ -126,7 +160,9 @@
         </div>
 
         <div class="project-card">
-          <img src="images/Porfolio Website.webp" alt="Portfolio Website Showcase" />
+          <div class="project-img-wrapper">
+            <img src="images/Porfolio Website.webp" alt="Portfolio Website Showcase" />
+          </div>
           <div class="project-content">
             <h3>Portfolio Website</h3>
             <p>A highly performance-optimized, clean, and fully responsive developer showcase interface.</p>
@@ -152,5 +188,15 @@
       <p>© 2026 Jiya Sukhija. All Rights Reserved.</p>
     </footer>
 
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+      var typed = new Typed('#typed-target', {
+        strings: ['Consistent Learner', 'Aspiring Software Engineer', 'MERN Stack Developer', 'Full Stack Web Developer', 'Problem Solver'],
+        typeSpeed: 50,    /* Smooth progression speed */
+        backSpeed: 30,    /* Natural humanized deletion rate */
+        backDelay: 1800,  /* Readable pause at completion */
+        loop: true
+      });
+    </script>
   </body>
 </html>
