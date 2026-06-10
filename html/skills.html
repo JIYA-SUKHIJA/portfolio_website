@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-    <link rel="stylesheet" href="../css/style2.css" />
+    <link rel="stylesheet" href="../css/skills.css" />
   </head>
   <body>
 
@@ -212,4 +212,113 @@
     </footer>
 
   </body>
+  <script>
+          document.addEventListener('DOMContentLoaded', () => {
+
+          // --- 1. Dynamic Progress Bar & Scroll Reveal Animations ---
+          const observerOptions = {
+              threshold: 0.1,
+              rootMargin: "0px 0px -50px 0px"
+          };
+
+          const scrollObserver = new IntersectionObserver((entries, observer) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                      // Reveal the card or wrapper
+                      entry.target.classList.add('revealed');
+                      
+                      // If it's a skill card, trigger the progress bar animation
+                      if (entry.target.classList.contains('skill-card')) {
+                          const fillBar = entry.target.querySelector('.progress-bar-fill');
+                          if (fillBar) {
+                              // Add a slight delay so the card appears first, then the bar fills
+                              setTimeout(() => {
+                                  fillBar.style.width = fillBar.getAttribute('data-target-width');
+                              }, 250); 
+                          }
+                      }
+                      
+                      observer.unobserve(entry.target); // Only animate once
+                  }
+              });
+          }, observerOptions);
+
+          // Prepare Elements for Animation
+          const elementsToReveal = document.querySelectorAll('.skills-category-wrapper, .skill-card, .skills-description');
+          
+          elementsToReveal.forEach((el, index) => {
+              // Set initial hidden state for smooth revealing
+              el.style.opacity = '0';
+              el.style.transform = 'translateY(30px)';
+              el.style.transition = 'opacity 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
+              
+              // Stagger the animation slightly for items in the same grid
+              if (el.classList.contains('skill-card')) {
+                  el.style.transitionDelay = `${(index % 3) * 0.1}s`;
+                  
+                  // Set up progress bars: store original width and reset to 0
+                  const fillBar = el.querySelector('.progress-bar-fill');
+                  if (fillBar) {
+                      const targetWidth = fillBar.style.width;
+                      fillBar.setAttribute('data-target-width', targetWidth);
+                      fillBar.style.width = '0%'; // Start at zero
+                  }
+              }
+
+              scrollObserver.observe(el);
+          });
+
+          // Add the revealed class via JS to keep CSS clean
+          document.head.insertAdjacentHTML('beforeend', `
+              <style>
+                  .revealed { opacity: 1 !important; transform: translateY(0) !important; }
+              </style>
+          `);
+
+
+          // --- 2. Dynamic Active Navigation Link ---
+          const currentPage = window.location.pathname.split('/').pop() || 'skills.html'; 
+          const navLinks = document.querySelectorAll('nav ul li a');
+          
+          navLinks.forEach(link => {
+              const linkHref = link.getAttribute('href').split('/').pop();
+              if (linkHref === currentPage) {
+                  link.style.color = 'var(--text-bright)';
+                  link.style.setProperty('border-bottom', '2px solid var(--primary-blue)'); 
+              }
+          });
+
+
+          // --- 3. Dynamic Copyright Year in Footer ---
+          const footerText = document.querySelector('footer p');
+          if (footerText) {
+              const currentYear = new Date().getFullYear();
+              footerText.innerHTML = `© ${currentYear} Jiya Sukhija. All Rights Reserved.`;
+          }
+
+          // --- 4. Theme Toggle (If you added it to navigation) ---
+          // This ensures light mode settings persist across pages
+          const themeToggleBtn = document.getElementById('theme-toggle');
+          const htmlElement = document.documentElement;
+
+          if (themeToggleBtn) {
+              const savedTheme = localStorage.getItem('portfolio-theme');
+              if (savedTheme === 'light') {
+                  htmlElement.classList.add('light-mode');
+                  themeToggleBtn.innerText = '🌙'; 
+              }
+
+              themeToggleBtn.addEventListener('click', () => {
+                  htmlElement.classList.toggle('light-mode');
+                  if (htmlElement.classList.contains('light-mode')) {
+                      localStorage.setItem('portfolio-theme', 'light');
+                      themeToggleBtn.innerText = '🌙';
+                  } else {
+                      localStorage.setItem('portfolio-theme', 'dark');
+                      themeToggleBtn.innerText = '☀️';
+                  }
+              });
+          }
+      });
+  </script>
 </html>

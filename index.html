@@ -11,21 +11,21 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    
-    <header>
-      <div class="header-bottom-row">
-        <p class="subtitle">JIYA SUKHIJA</p>
-        <nav>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="html/about.html">About</a></li>
-            <li><a href="html/skills.html">Skills</a></li>
-            <li><a href="html/projects.html">Projects</a></li>
-            <li><a href="html/contact.html">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+    <div id="scroll-progress"></div>
+   <header>
+    <div class="header-bottom-row">
+      <p class="subtitle">JIYA SUKHIJA</p>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="html/about.html">About</a></li>
+          <li><a href="html/skills.html">Skills</a></li>
+          <li><a href="html/projects.html">Projects</a></li>
+          <li><a href="html/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
     <div class="hero-about-wrapper">
       <section class="hero">
@@ -97,7 +97,7 @@
       </div>
     </section>
 
-    <section class="skills">
+    <section class="skills" id="skills">
       <div class="section-title-wrapper">
         <h2>My Skills</h2>
       </div>
@@ -133,7 +133,7 @@
       </div>
     </section>
 
-    <section class="projects">
+    <section class="projects" id="projects">
       <div class="section-title-wrapper">
         <h2>Projects</h2>
       </div>
@@ -183,7 +183,7 @@
         <button type="submit">Submit Message</button>
       </form>
     </section>
-
+    <button id="backToTop" title="Go to top">↑</button>
     <footer>
       <p>© 2026 Jiya Sukhija. All Rights Reserved.</p>
     </footer>
@@ -192,11 +192,121 @@
     <script>
       var typed = new Typed('#typed-target', {
         strings: ['Consistent Learner', 'Aspiring Software Engineer', 'MERN Stack Developer', 'Full Stack Web Developer', 'Problem Solver'],
-        typeSpeed: 50,    /* Smooth progression speed */
-        backSpeed: 30,    /* Natural humanized deletion rate */
-        backDelay: 1800,  /* Readable pause at completion */
+        typeSpeed: 50,    
+        backSpeed: 30,    
+        backDelay: 1800,  
         loop: true
       });
     </script>
-  </body>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+          
+          // --- 1. Intersection Observer for Scroll Animations ---
+          const observerOptions = {
+              root: null,
+              rootMargin: '0px',
+              threshold: 0.15 
+          };
+
+          const sectionObserver = new IntersectionObserver((entries, observer) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                      entry.target.classList.add('visible');
+                  }
+              });
+          }, observerOptions);
+
+          const sections = document.querySelectorAll('section');
+          sections.forEach(section => {
+              section.classList.add('reveal-section');
+              sectionObserver.observe(section);
+          });
+
+          // --- 2. Scroll Spy Navigation ---
+          const navLinks = document.querySelectorAll('nav ul li a');
+          
+          window.addEventListener('scroll', () => {
+              let currentSectionId = '';
+
+              sections.forEach(section => {
+                  const sectionTop = section.offsetTop;
+                  if (pageYOffset >= (sectionTop - 200)) {
+                      currentSectionId = section.getAttribute('id');
+                  }
+              });
+
+              navLinks.forEach(link => {
+                  link.classList.remove('active');
+                  if (link.getAttribute('href') === `#${currentSectionId}`) {
+                      link.classList.add('active');
+                  }
+              });
+          });
+
+          // --- 3. Enhanced Form Submission Experience ---
+          const contactForm = document.getElementById('contactForm');
+          
+          if (contactForm) {
+              contactForm.addEventListener('submit', (e) => {
+                  e.preventDefault(); 
+                  
+                  const submitBtn = contactForm.querySelector('button');
+                  const originalText = submitBtn.innerText;
+                  
+                  submitBtn.innerText = 'Sending...';
+                  submitBtn.style.opacity = '0.7';
+                  submitBtn.style.cursor = 'wait';
+
+                  setTimeout(() => {
+                      submitBtn.innerText = 'Message Sent Successfully!';
+                      submitBtn.style.background = 'linear-gradient(135deg, #10b981 0%, #059669 100%)'; 
+                      submitBtn.style.opacity = '1';
+                      submitBtn.style.cursor = 'pointer';
+                      
+                      contactForm.reset();
+
+                      setTimeout(() => {
+                          submitBtn.innerText = originalText;
+                          submitBtn.style.background = ''; 
+                      }, 3500);
+                      
+                  }, 1500); 
+              });
+          }
+
+          // --- 4. Scroll Progress Bar Logic ---
+          const scrollProgress = document.getElementById('scroll-progress');
+          
+          if (scrollProgress) {
+              window.addEventListener('scroll', () => {
+                  const totalScroll = document.documentElement.scrollTop;
+                  const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                  const scrollPercentage = `${(totalScroll / windowHeight) * 100}%`;
+                  scrollProgress.style.width = scrollPercentage;
+              });
+          }
+
+          // --- 5. Back to Top Button Logic ---
+          const backToTopBtn = document.getElementById("backToTop");
+          
+          if (backToTopBtn) {
+              window.addEventListener('scroll', () => {
+                  if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                      backToTopBtn.classList.add("show");
+                  } else {
+                      backToTopBtn.classList.remove("show");
+                  }
+              });
+
+              backToTopBtn.addEventListener('click', () => {
+                  window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth'
+                  });
+              });
+          }
+      });
+    </script>
+    </body>
 </html>
