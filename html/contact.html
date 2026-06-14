@@ -1,95 +1,167 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth bg-[#0a0a0a] selection:bg-primary/40 selection:text-white">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact - Jiya Sukhija</title>
+    
+    <link rel="icon" type="image/jpeg" href="images/profile.jpeg">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Shared CSS file -->
     <link rel="stylesheet" href="../css/contact.css" />
-  </head>
-  <body>
 
-    <header>
-      <div class="header-bottom-row">
-        <p class="subtitle">JIYA SUKHIJA</p>
+    <!-- Tailwind CDN Config -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              deep: '#0a0a0a', surface: '#121212', card: '#18181b',
+              primary: '#6366f1', secondary: '#8b5cf6', accent: '#06b6d4',
+              bright: '#f8fafc', muted: '#a1a1aa',
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+              heading: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+              mono: ['Fira Code', 'monospace'],
+            },
+            animation: {
+              'page-reveal': 'pageReveal 1s ease-out forwards',
+              'float': 'float 5s ease-in-out infinite',
+            },
+            keyframes: {
+              pageReveal: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-12px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+
+  <body class="bg-deep text-muted leading-relaxed overflow-x-hidden animate-page-reveal font-sans relative">
+
+    <!-- Background Accents -->
+    <div class="fixed top-[-10%] left-[-5%] w-[40vw] h-[40vw] rounded-full bg-primary/10 blur-[100px] pointer-events-none mix-blend-screen z-0"></div>
+    <div class="fixed bottom-[-10%] right-[-5%] w-[30vw] h-[30vw] rounded-full bg-secondary/10 blur-[100px] pointer-events-none mix-blend-screen z-0"></div>
+
+    <!-- Header -->
+    <header class="bg-deep/80 backdrop-blur-xl py-4 px-6 md:px-12 flex flex-col items-center border-b border-white/10 sticky top-0 z-[1000] shadow-lg transition-all duration-300">
+      <div class="w-full max-w-[1200px] flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+        <p class="font-mono text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent animate-float">
+          <span class="text-white">&lt;</span>JIYA SUKHIJA<span class="text-white">/&gt;</span>
+        </p>
         <nav>
-          <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="skills.html">Skills</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="contact.html">Contact</a></li>
+          <ul class="flex gap-6 md:gap-8 list-none">
+            <li><a href="/index.html" class="nav-link text-sm font-semibold tracking-wide hover:text-white transition-colors">Home</a></li>
+            <li><a href="../html/about.html" class="nav-link text-sm font-semibold tracking-wide hover:text-white transition-colors">About</a></li>
+            <li><a href="../html/skills.html" class="nav-link text-sm font-semibold tracking-wide hover:text-white transition-colors">Skills</a></li>
+            <li><a href="../html/projects.html" class="nav-link text-sm font-semibold tracking-wide hover:text-white transition-colors">Projects</a></li>
+            <li><a href="../html/contact.html" class="nav-link active text-white border-b-2 border-primary pb-1 text-sm font-semibold tracking-wide transition-colors">Contact</a></li>
           </ul>
         </nav>
       </div>
     </header>
 
-    <section class="contact" id="contact">
-      <div class="section-title-wrapper">
-        <h2>Contact Me</h2>
+    <main class="relative z-10 pt-12 pb-20 px-5 max-w-[800px] mx-auto">
+      
+      <!-- Page Header -->
+      <div class="text-center mb-16 reveal-section">
+        <h2 class="font-mono text-2xl font-bold text-primary mb-2">// Let's Talk</h2>
+        <h3 class="font-heading text-4xl md:text-5xl font-extrabold text-bright mb-6">Contact Me</h3>
+        <p class="text-muted text-base md:text-lg max-w-2xl mx-auto">
+          Have a question or want to work together? Drop a message below!
+        </p>
       </div>
-      <p class="contact-subtitle">
-        Have a question or want to work together? Drop a message below!
-      </p>
 
-      <div class="contact-container">
-        <form id="contactForm" action="https://docs.google.com/forms/d/e/1FAIpQLScH5RAely7DGDydupgqea52WNnPELVedMfok_dEI4pEsmNZwQ/formResponse" method="POST">
-          
-          <div class="form-group">
-            <label for="name">Your Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Enter your name"
-              required
-            />
+      <!-- Contact Form -->
+      <div class="reveal-section">
+        <form id="contactForm" action="https://docs.google.com/forms/d/e/1FAIpQLScH5RAely7DGDydupgqea52WNnPELVedMfok_dEI4pEsmNZwQ/formResponse" method="POST" class="bg-card border border-white/5 p-8 md:p-12 rounded-2xl shadow-xl hover:border-primary/30 transition-colors duration-500">
+          <div class="space-y-6">
+            
+            <div>
+              <label for="name" class="block text-xs font-mono text-muted mb-2">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="Enter your name" required class="w-full p-4 bg-surface border border-white/10 rounded-lg text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-mono text-sm" />
+            </div>
+            
+            <div>
+              <label for="email" class="block text-xs font-mono text-muted mb-2">Your Email</label>
+              <input type="email" id="email" name="email" placeholder="Enter your email" required class="w-full p-4 bg-surface border border-white/10 rounded-lg text-white focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-mono text-sm" />
+            </div>
+            
+            <div>
+              <label for="message" class="block text-xs font-mono text-muted mb-2">Your Message</label>
+              <textarea id="message" name="message" rows="6" placeholder="Type your message here..." required class="w-full p-4 bg-surface border border-white/10 rounded-lg text-white min-h-[160px] resize-y focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-mono text-sm"></textarea>
+            </div>
+            
+            <button type="submit" class="w-full py-4 bg-primary hover:bg-secondary text-white font-bold rounded-lg transition-all duration-300 shadow-[0_0_15px_rgba(99,102,241,0.3)] hover:shadow-[0_0_25px_rgba(99,102,241,0.5)] cursor-hover-target mt-4">
+              Send Message 🚀
+            </button>
+            
           </div>
-
-          <div class="form-group">
-            <label for="email">Your Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-              required
-            />
-          </div>
-
-          <div class="form-group">
-            <label for="message">Your Message</label>
-            <textarea
-              id="message"
-              name="message"
-              rows="6"
-              placeholder="Type your message here..."
-              required
-            ></textarea>
-          </div>
-
-          <button type="submit" class="submit-btn">Send Message</button>
         </form>
       </div>
 
-      <p class="contact-note">
-        I am always open to discussing new projects, creative ideas, or
-        opportunities to be part of your vision. Whether you have a question
-        about my work, want to collaborate on a project, or just want to say hi,
-        feel free to reach out. I look forward to connecting with you and
-        exploring how we can work together to create something amazing!
-      </p>
-
-      <div class="back-home-container">
-        <a href="../index.html" class="resume-btn">Back to Home</a>
+      <!-- Narrative Note -->
+      <div class="mt-16 bg-surface/50 backdrop-blur-md rounded-2xl border border-white/10 p-8 shadow-xl relative hover:border-primary/30 transition-colors duration-500 reveal-section">
+        <p class="text-muted/90 text-sm md:text-base leading-relaxed font-medium text-center md:text-left mb-6">
+          I am always open to discussing new projects, creative ideas, or opportunities to be part of your vision. Whether you have a question about my work, want to collaborate on a project, or just want to say hi, feel free to reach out. I look forward to connecting with you and exploring how we can work together to create something amazing!
+        </p>
+        <div class="flex justify-center md:justify-start">
+          <a href="../index.html" class="inline-flex items-center gap-2 py-2.5 px-6 bg-card border border-white/10 hover:border-white/30 text-white font-bold rounded-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/5 text-sm">
+            Back to Home
+          </a>
+        </div>
       </div>
-    </section>
 
-    <footer>
-      <p>© 2026 Jiya Sukhija. All Rights Reserved.</p>
+    </main>
+
+    <footer class="bg-surface border-t border-white/5 text-muted text-center py-8 text-sm font-mono relative z-10 mt-10">
+      <p>⚡ Built with logic & creativity.</p>
+      <p class="mt-2" id="footer-year">© 2026 Jiya Sukhija. All rights reserved.</p>
     </footer>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Scroll Reveal Logic
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                  entry.target.classList.add('visible');
+                  observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal-section').forEach(s => observer.observe(s));
+        
+        // Auto-update footer year
+        document.getElementById('footer-year').innerText = `© ${new Date().getFullYear()} Jiya Sukhija. All rights reserved.`;
+
+        // Optional: Interactive Form button state mapping
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', () => {
+                const submitBtn = contactForm.querySelector('button');
+                submitBtn.innerText = 'Sending...';
+                submitBtn.style.opacity = '0.7';
+                submitBtn.style.cursor = 'wait';
+                // Note: since this is a standard form POST, the page will likely redirect to Google Forms immediately after.
+            });
+        }
+      });
+    </script>
   </body>
 </html>

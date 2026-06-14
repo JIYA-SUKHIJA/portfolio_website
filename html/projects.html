@@ -1,120 +1,182 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth bg-[#0a0a0a] selection:bg-primary/40 selection:text-white">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projects - Jiya Sukhija</title>
+    
+    <link rel="icon" type="image/jpeg" href="../images/profile.jpeg">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code:wght@400;600&family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="../css/projects.css" />
-  </head>
-  <body>
 
-    <header>
-      <div class="header-bottom-row">
-        <p class="subtitle">JIYA SUKHIJA</p>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              deep: '#0a0a0a', surface: '#121212', card: '#18181b',
+              primary: '#6366f1', secondary: '#8b5cf6', accent: '#06b6d4',
+              bright: '#f8fafc', muted: '#a1a1aa',
+            },
+            fontFamily: {
+              sans: ['Inter', 'system-ui', 'sans-serif'],
+              heading: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+              mono: ['Fira Code', 'monospace'],
+            },
+            animation: {
+              'page-reveal': 'pageReveal 1s ease-out forwards',
+              'float': 'float 5s ease-in-out infinite',
+            },
+            keyframes: {
+              pageReveal: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-12px)' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+
+  <body class="bg-deep text-muted leading-relaxed overflow-x-hidden animate-page-reveal font-sans relative">
+
+    <div class="fixed top-[-10%] left-[-5%] w-[40vw] h-[40vw] rounded-full bg-primary/10 blur-[100px] pointer-events-none mix-blend-screen z-0"></div>
+    <div class="fixed bottom-[-10%] right-[-5%] w-[30vw] h-[30vw] rounded-full bg-secondary/10 blur-[100px] pointer-events-none mix-blend-screen z-0"></div>
+
+    <header class="bg-deep/80 backdrop-blur-xl py-4 px-6 md:px-12 flex flex-col items-center border-b border-white/10 sticky top-0 z-[1000] shadow-lg transition-all duration-300">
+      <div class="w-full max-w-[1200px] flex flex-col md:flex-row justify-between items-center gap-4 md:gap-0">
+        <p class="font-mono text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent animate-float">
+          <span class="text-white">&lt;</span>JIYA SUKHIJA<span class="text-white">/&gt;</span>
+        </p>
         <nav>
-          <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="skills.html">Skills</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="contact.html">Contact</a></li>
+          <ul class="flex gap-6 md:gap-8 list-none">
+            <li><a href="../index.html" class="nav-link text-sm font-semibold tracking-wide hover:text-white transition-colors">Home</a></li>
+            <li><a href="../html/about.html" class="nav-link text-sm font-semibold tracking-wide hover:text-white transition-colors">About</a></li>
+            <li><a href="../html/skills.html" class="nav-link text-sm font-semibold tracking-wide hover:text-white transition-colors">Skills</a></li>
+            <li><a href="../html/projects.html" class="nav-link active text-white border-b-2 border-primary pb-1 text-sm font-semibold tracking-wide transition-colors">Projects</a></li>
+            <li><a href="../html/contact.html" class="nav-link text-sm font-semibold tracking-wide hover:text-white transition-colors">Contact</a></li>
           </ul>
         </nav>
       </div>
-    </header>
+    </header> 
 
-    <section class="projects" id="projects">
-      <div class="section-title-wrapper">
-        <h2>Projects</h2>
+    <main class="relative z-10 pt-12 pb-20 px-5 max-w-[1200px] mx-auto">
+      
+      <div class="text-center mb-16 reveal-section">
+        <h2 class="font-mono text-2xl font-bold text-primary mb-2">// Portfolio</h2>
+        <h3 class="font-heading text-4xl md:text-5xl font-extrabold text-bright mb-6">Featured Projects</h3>
+        <p class="text-muted text-base md:text-lg max-w-2xl mx-auto">
+          A showcase of my recent work, highlighting my ability to build scalable, responsive, and user-centric applications.
+        </p>
       </div>
 
-      <div class="project-container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         
-        <div class="project-card">
-          <img
-            src="../images/E-Commerce Website.webp"
-            alt="E-Commerce Website Showcase"
-          />
-          <div class="project-content">
-            <h3>E-Commerce Website</h3>
-            <p class="project-description">
-              A full-stack online shopping platform featuring a responsive user
-              interface, dynamic product catalogs, a persistent shopping cart
-              module, and simulated secure user authentication flows.
+        <div class="bg-card border border-white/5 rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 hover:border-primary/50 transition-all duration-300 group reveal-section flex flex-col">
+          <div class="h-56 overflow-hidden relative">
+            <div class="absolute inset-0 bg-primary/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
+            <img src="images/E-Commerce Website.webp" alt="E-Commerce Website Showcase" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" onerror="this.src='https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=800&auto=format&fit=crop'" />
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold text-bright mb-3 group-hover:text-primary transition-colors">E-Commerce Website</h3>
+            <p class="text-muted text-sm leading-relaxed mb-6 flex-grow">
+              A full-stack online shopping platform featuring a responsive user interface, dynamic product catalogs, a persistent shopping cart module, and simulated secure user authentication flows.
             </p>
-            <div class="project-tech-tags">
-              <span class="tech-tag">HTML5</span>
-              <span class="tech-tag">CSS3</span>
-              <span class="tech-tag">JavaScript</span>
-              <span class="tech-tag">Bootstrap</span>
+            <div class="flex flex-wrap gap-2 mt-auto">
+              <span class="text-xs font-mono text-indigo-400 bg-indigo-400/10 py-1.5 px-3 rounded-md border border-indigo-400/20">HTML5</span>
+              <span class="text-xs font-mono text-indigo-400 bg-indigo-400/10 py-1.5 px-3 rounded-md border border-indigo-400/20">CSS3</span>
+              <span class="text-xs font-mono text-indigo-400 bg-indigo-400/10 py-1.5 px-3 rounded-md border border-indigo-400/20">JavaScript</span>
+              <span class="text-xs font-mono text-indigo-400 bg-indigo-400/10 py-1.5 px-3 rounded-md border border-indigo-400/20">Bootstrap</span>
             </div>
           </div>
         </div>
 
-        <div class="project-card">
-          <img
-            src="../images/Student Management System.webp"
-            alt="Student Management System Showcase"
-          />
-          <div class="project-content">
-            <h3>Student Management System</h3>
-            <p class="project-description">
-              An efficient desktop-friendly CRUD application designed for
-              managing educational records. Facilitates student enrollment,
-              real-time course tracking, grade registry, and structural database
-              query processes.
+        <div class="bg-card border border-white/5 rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 hover:border-emerald-500/50 transition-all duration-300 group reveal-section flex flex-col" style="transition-delay: 100ms;">
+          <div class="h-56 overflow-hidden relative">
+            <div class="absolute inset-0 bg-emerald-500/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
+            <img src="images/Student Management System.webp" alt="Student Management System Showcase" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" onerror="this.src='https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800&auto=format&fit=crop'" />
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold text-bright mb-3 group-hover:text-emerald-400 transition-colors">Student Management System</h3>
+            <p class="text-muted text-sm leading-relaxed mb-6 flex-grow">
+              An efficient desktop-friendly CRUD application designed for managing educational records. Facilitates student enrollment, real-time course tracking, grade registry, and structural database query processes.
             </p>
-            <div class="project-tech-tags">
-              <span class="tech-tag">React</span>
-              <span class="tech-tag">Node.js</span>
-              <span class="tech-tag">Express</span>
-              <span class="tech-tag">MongoDB</span>
+            <div class="flex flex-wrap gap-2 mt-auto">
+              <span class="text-xs font-mono text-emerald-400 bg-emerald-400/10 py-1.5 px-3 rounded-md border border-emerald-400/20">React</span>
+              <span class="text-xs font-mono text-emerald-400 bg-emerald-400/10 py-1.5 px-3 rounded-md border border-emerald-400/20">Node.js</span>
+              <span class="text-xs font-mono text-emerald-400 bg-emerald-400/10 py-1.5 px-3 rounded-md border border-emerald-400/20">Express</span>
+              <span class="text-xs font-mono text-emerald-400 bg-emerald-400/10 py-1.5 px-3 rounded-md border border-emerald-400/20">MongoDB</span>
             </div>
           </div>
         </div>
 
-        <div class="project-card">
-          <img 
-            src="../images/Porfolio Website.webp" 
-            alt="Portfolio Website Showcase" 
-          />
-          <div class="project-content">
-            <h3>Portfolio Website</h3>
-            <p class="project-description">
-              A sleek, lightning-fast digital workspace built to showcase
-              personal technical proficiency, educational milestones, and core
-              project development histories across cross-platform display
-              viewports.
+        <div class="bg-card border border-white/5 rounded-2xl overflow-hidden shadow-xl hover:-translate-y-2 hover:border-cyan-400/50 transition-all duration-300 group reveal-section flex flex-col" style="transition-delay: 200ms;">
+          <div class="h-56 overflow-hidden relative">
+            <div class="absolute inset-0 bg-cyan-400/20 mix-blend-overlay opacity-0 group-hover:opacity-100 transition-opacity z-10"></div>
+            <img src="images/Porfolio Website.webp" alt="Portfolio Website Showcase" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" onerror="this.src='https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=800&auto=format&fit=crop'" />
+          </div>
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold text-bright mb-3 group-hover:text-cyan-400 transition-colors">Portfolio Website</h3>
+            <p class="text-muted text-sm leading-relaxed mb-6 flex-grow">
+              A sleek, lightning-fast digital workspace built to showcase personal technical proficiency, educational milestones, and core project development histories across cross-platform display viewports.
             </p>
-            <div class="project-tech-tags">
-              <span class="tech-tag">HTML5</span>
-              <span class="tech-tag">CSS3</span>
-              <span class="tech-tag">JavaScript</span>
+            <div class="flex flex-wrap gap-2 mt-auto">
+              <span class="text-xs font-mono text-cyan-400 bg-cyan-400/10 py-1.5 px-3 rounded-md border border-cyan-400/20">HTML5</span>
+              <span class="text-xs font-mono text-cyan-400 bg-cyan-400/10 py-1.5 px-3 rounded-md border border-cyan-400/20">CSS3</span>
+              <span class="text-xs font-mono text-cyan-400 bg-cyan-400/10 py-1.5 px-3 rounded-md border border-cyan-400/20">JavaScript</span>
             </div>
           </div>
         </div>
 
-      </div> <p class="projects-conclusion">
-        These projects exemplify my commitment to crafting responsive,
-        user-centric applications with a focus on performance optimization and
-        clean code architecture. Each project demonstrates my ability to
-        leverage modern web technologies to solve real-world problems and create
-        engaging user experiences. I am excited to continue building innovative solutions and
-        contributing to impactful projects in the future.
-      </p>
-
-      <div class="back-home-container">
-        <a href="../index.html" class="resume-btn">Back to Home</a>
       </div>
-         
-    </section>
 
-    <footer>
-      <p>© 2026 Jiya Sukhija. All Rights Reserved.</p>
+      <div class="mt-20 bg-surface/50 backdrop-blur-md rounded-3xl border border-white/10 p-8 md:p-12 shadow-2xl relative hover:border-primary/30 transition-colors duration-500 reveal-section">
+        <p class="text-muted/90 text-base md:text-lg leading-relaxed font-medium mb-8 text-center md:text-left">
+          These projects exemplify my commitment to crafting responsive, user-centric applications with a focus on performance optimization and clean code architecture. Each project demonstrates my ability to leverage modern web technologies to solve real-world problems and create engaging user experiences. I am excited to continue building innovative solutions and contributing to impactful projects in the future.
+        </p>
+        
+        <div class="flex justify-center md:justify-start">
+          <a href="../index.html" class="inline-flex items-center gap-2 py-3 px-8 bg-card border border-white/10 hover:border-white/30 text-white font-bold rounded-lg transition-all duration-300 hover:-translate-y-1 hover:bg-white/5">
+            Back to Home
+          </a>
+        </div>
+      </div>
+
+    </main>
+
+    <footer class="bg-surface border-t border-white/5 text-muted text-center py-8 text-sm font-mono relative z-10 mt-10">
+      <p>⚡ Built with logic & creativity.</p>
+      <p class="mt-2" id="footer-year">© 2026 Jiya Sukhija. All rights reserved.</p>
     </footer>
 
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Scroll Reveal Logic
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                  entry.target.classList.add('visible');
+                  observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        // Observe all elements with the reveal-section class
+        document.querySelectorAll('.reveal-section').forEach(s => observer.observe(s));
+        
+        // Auto-update footer year
+        document.getElementById('footer-year').innerText = `© ${new Date().getFullYear()} Jiya Sukhija. All rights reserved.`;
+      });
+    </script>
   </body>
 </html>

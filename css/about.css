@@ -1,471 +1,68 @@
-/* --- Inner Page Architecture Design Tokens (Synced with main style.css) --- */
-:root {
-    /* Fluid Design Tokens & Colors */
-    --bg-deep: #0b0f19;          
-    --bg-surface: #131c2e;       
-    --bg-card: #1e293b;          
-    
-    /* Accents & High-End Gradients */
-    --primary-blue: #3b82f6;     
-    --primary-glow: rgba(59, 130, 246, 0.15); 
-    --secondary-blue: #60a5fa;   
-    
-    /* Advanced Semantic Gradients */
-    --gradient-accent: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 50%, #1e1b4b 100%); 
-    --gradient-text: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-    --gradient-heading-line: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
-    
-    /* High Contrast Typography & Clean Borders */
-    --text-bright: #f8fafc;      
-    --text-muted: #94a3b8;       
-    --border-subtle: rgba(51, 65, 85, 0.6);    
-    
-    /* UI Engineering Tokens & Timing Functions */
-    --radius-premium: 16px;      
-    --radius-interactive: 8px;   /* Synced from 30px to clean 8px modern radius */
-    
-    /* Custom Luxury Easing (Snappy start, smooth deceleration) */
-    --easing-premium: cubic-bezier(0.2, 0.8, 0.2, 1); 
-    
-    /* Advanced Layered Box Shadows */
-    --shadow-sm: 0 2px 8px -2px rgba(0, 0, 0, 0.5);
-    --shadow-lg: 0 20px 40px -15px rgba(0, 0, 0, 0.7);
-    --shadow-glow: 0 0 25px rgba(59, 130, 246, 0.2);
+/* --- Base Styling & Overrides --- */
+::selection {
+    background-color: rgba(99, 102, 241, 0.4);
+    color: #ffffff;
 }
 
-/* --- Global Reset Configurations & Entry Keyframes --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
+/* --- Custom Minimalist Scrollbar --- */
+::-webkit-scrollbar { 
+    width: 8px; 
 }
 
-html {
-    scroll-behavior: smooth;
-    background-color: var(--bg-deep);
+::-webkit-scrollbar-track { 
+    background: #0a0a0a; 
 }
 
-/* Custom Minimalist Scrollbar Design */
-::-webkit-scrollbar {
-    width: 6px;
-}
-::-webkit-scrollbar-track {
-    background: var(--bg-deep);
-}
-::-webkit-scrollbar-thumb {
-    background: #334155;
-    border-radius: 100px;
-    transition: background 0.3s ease;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-blue);
+::-webkit-scrollbar-thumb { 
+    background: #27272a; 
+    border-radius: 10px; 
+    transition: background 0.3s ease; 
 }
 
-body {
-    background-color: var(--bg-deep);
-    color: var(--text-muted);
-    line-height: 1.625;
-    overflow-x: hidden;
-    /* Subtle page load fade-in sequence */
-    animation: pageReveal 1s var(--easing-premium) forwards;
+::-webkit-scrollbar-thumb:hover { 
+    background: #6366f1; /* Indigo primary */
 }
 
-/* --- Global Animation Keyframes --- */
-@keyframes pageReveal {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* --- JS Scroll Reveal Animations --- */
+.reveal-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
 }
 
-@keyframes lineExpand {
-    from { width: 0; opacity: 0; }
-    to { width: 45px; opacity: 1; }
+.reveal-section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
-/* --- Navigation Header --- */
-header {
-    background: rgba(11, 15, 25, 0.75);
-    backdrop-filter: blur(20px) saturate(180%); 
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    padding: 16px 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-bottom: 1px solid var(--border-subtle);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-    transition: background-color 0.3s ease;
-}
-
-header h1 {
-    font-size: 1.35rem;
-    margin-bottom: 8px; 
-    color: var(--text-bright);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-}
-
-.header-bottom-row {
-    width: 100%;
-    max-width: 1100px;
-    display: flex;
-    justify-content: space-between; 
-    align-items: center;
-}
-
-.subtitle {
-    font-size: 1.25rem;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--primary-blue);
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 24px;
-}
-
-nav a {
-    color: var(--text-muted);
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.875rem;
+/* --- Navigation Active/Hover Underline --- */
+.nav-link {
     position: relative;
-    padding: 6px 0;
-    transition: color 0.3s var(--easing-premium);
-}   
+    padding-bottom: 4px;
+}
 
-/* Premium Navigation Slide-out Line Transition */
-nav a::after {
+.nav-link::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 1.5px;
-    background: var(--primary-blue);
+    bottom: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 2px;
+    background: #6366f1; /* Indigo primary */
     transform: scaleX(0);
     transform-origin: right;
-    transition: transform 0.4s var(--easing-premium);
+    transition: transform 0.3s ease;
 }
 
-nav a:hover {
-    color: var(--text-bright);
-}
-
-nav a:hover::after {
+.nav-link:hover::after, 
+.nav-link.active::after {
     transform: scaleX(1);
     transform-origin: left;
 }
 
-/* --- Section Master Containers --- */
-.about-relative-wrapper {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 60px 20px;
-}
-
-/* Title Design matching main landing layout */
-h2 {
-    font-size: 2.25rem;
-    font-weight: 800;
-    color: var(--text-bright);
-    letter-spacing: -0.03em;
-    margin-bottom: 12px;
-}
-
-.section-title-wrapper {
-    margin-bottom: 50px;
-    text-align: center;
-}
-.section-title-wrapper h2 {
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-.section-title-wrapper::after {
-    content: '';
-    display: block;
-    width: 45px;
-    height: 3px;
-    background: var(--gradient-heading-line);
-    margin: 12px auto 0 auto;
-    border-radius: 100px;
-    animation: lineExpand 1.2s var(--easing-premium) both;
-}
-
-/* --- About Intro Block --- */
-.about-intro {
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-premium);
-    padding: 45px;
-    box-shadow: var(--shadow-lg);
-    margin-bottom: 40px;
-    position: relative;
-}
-
-.about-intro p {
-    font-size: 0.95rem;
-    color: var(--text-muted);
-    line-height: 1.625;
-}
-
-/* Premium Standalone Buttons with Shimmer Depth */
-.resume-btn-container, .back-home-container {
-    text-align: center;
-    margin-top: 25px;
-}
-
-.resume-btn, .home-btn {
-    padding: 10px 24px;
-    background: var(--gradient-accent);
-    color: #ffffff;
-    border: none;
-    border-radius: var(--radius-interactive); 
-    font-weight: 600;
-    font-size: 0.875rem;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-    transition: transform 0.3s var(--easing-premium), box-shadow 0.3s var(--easing-premium);
+/* --- 3D Card Hover Effect --- */
+.3d-card {
+    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
     will-change: transform;
-}
-
-.resume-btn {
-    background: transparent;
-    color: var(--text-bright);
-    border: 1px solid var(--border-subtle);
-    transition: background-color 0.3s, border-color 0.3s, transform 0.3s var(--easing-premium);
-}
-
-.resume-btn:hover {
-    background: rgba(255, 255, 255, 0.03);         
-    border-color: var(--text-bright);
-    transform: translateY(-3px);
-    box-shadow: none;
-    color: #ffffff;
-}
-
-.home-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-    transform: translateX(-100%);
-    transition: transform 0.5s ease;
-    z-index: -1;
-}
-
-.home-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px -4px rgba(59, 130, 246, 0.4);
-}
-
-.home-btn:hover::before {
-    transform: translateX(100%);
-}
-
-/* --- Layout Row: Symmetrical Split Grid --- */
-.about-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 24px;
-    margin-bottom: 40px;
-}
-
-.about-column {
-    flex: 1;
-    background: var(--bg-surface);
-    border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-premium);
-    padding: 35px;
-    box-shadow: var(--shadow-sm);
-}
-
-.about-column h3 {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--text-bright);
-    margin-bottom: 25px;
-    position: relative;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--border-subtle);
-}
-
-/* Educational Item Structure inside column */
-.education-item {
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(51, 65, 85, 0.3);
-}
-
-.education-item:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-    border-bottom: none;
-}
-
-.education-item h4 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--text-bright);
-    margin-bottom: 6px;
-}
-
-.school-name {
-    color: var(--secondary-blue);
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 8px;
-}
-
-.education-item p:not(.school-name) {
-    color: var(--text-muted);
-    font-size: 0.875rem;
-}
-
-/* Skills Layout inside column */
-.skills-category {
-    margin-bottom: 25px;
-}
-
-.skills-category:last-child {
-    margin-bottom: 0;
-}
-
-.skills-category h4 {
-    font-size: 0.8rem;
-    color: var(--text-bright);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-}
-
-.skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-/* Springy Reactive Skill Badges Synced with main.css */
-.skill-tag {
-    background: rgba(30, 41, 59, 0.4);
-    color: var(--text-bright);
-    padding: 10px 18px;
-    border-radius: 8px;
-    border: 1px solid var(--border-subtle);
-    font-weight: 600;
-    font-size: 0.85rem;
-    box-shadow: var(--shadow-sm);
-    transition: border-color 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                background-color 0.2s ease, 
-                transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    will-change: transform;
-}
-
-.skill-tag:hover {
-    transform: translateY(-4px) scale(1.05);
-    border-color: var(--primary-blue);
-    background: var(--bg-card);
-    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.15);
-}
-
-/* --- Certifications Blocks Layout --- */
-.about-column.full-width {
-    width: 100%;
-    margin-top: 10px;
-}
-
-.cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 16px;
-}
-
-/* Cert Items With Kinetic Horizontal Micro-Interactions */
-.cert-item {
-    background: rgba(15, 23, 42, 0.6);
-    border: 1px solid var(--border-subtle);
-    border-left: 4px solid var(--primary-blue);
-    border-radius: 8px;
-    padding: 18px 20px;
-    color: var(--text-bright);
-    font-weight: 700;
-    font-size: 0.875rem;
-    transition: border-color 0.3s var(--easing-premium), transform 0.4s var(--easing-premium), box-shadow 0.4s var(--easing-premium), background-color 0.3s ease;
-    will-change: transform;
-}
-
-.cert-item:hover {
-    transform: translateX(6px);
-    background: var(--bg-card);
-    border-left-color: var(--secondary-blue);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* --- Centered Back To Home Button Assembly --- */
-.back-home-container {
-    margin-top: 50px;
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-/* --- Footer Area --- */
-footer {
-    background: #070a12;
-    color: #475569;
-    text-align: center;
-    padding: 30px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    border-top: 1px solid var(--border-subtle);
-    letter-spacing: 0.5px;
-    margin-top: 60px;
-}
-
-/* --- Fluid Structural Responsive View Adapters --- */
-@media(max-width: 992px) {
-    .about-row {
-        flex-direction: column;
-        gap: 24px;
-    }
-    .about-intro {
-        padding: 30px 20px;
-    }
-}
-
-@media(max-width: 768px) {
-    header {
-        padding: 16px 20px;
-    }
-
-    .header-bottom-row {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-    }
-
-    header h1 {
-        font-size: 1.25rem;
-    }
-
-    nav ul {
-        gap: 16px;
-    }
-
-    .about-column {
-        padding: 25px 20px;
-    }
 }
